@@ -9,14 +9,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
-// app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
 
 // Import and use API routes
 const apiRoutes = require('./routes/apiRoutes');
 app.use('/api', apiRoutes);
-// app.use('/uploads', express.static('uploads'));
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
