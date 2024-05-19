@@ -5,6 +5,7 @@ const db = require('../config/database');
 // User registration
 exports.register = async (req, res) => {
     
+<<<<<<< HEAD
     // console.log('Register function called');
     const { username, email, birthdate, password, security_question, security_answer } = req.body;
 
@@ -17,6 +18,20 @@ exports.register = async (req, res) => {
     //     security_question: typeof security_question,
     //     security_answer: typeof security_answer
     // });
+=======
+    console.log('Register function called');
+    const { username, email, birthdate, password, security_question, security_answer } = req.body;
+
+    console.log('Input values:', { username, email, birthdate, password, security_question, security_answer });
+    console.log('Input types:', {
+        username: typeof username,
+        email: typeof email,
+        birthdate: typeof birthdate,
+        password: typeof password,
+        security_question: typeof security_question,
+        security_answer: typeof security_answer
+    });
+>>>>>>> e30fde2 (prototype)
     
     const hashedPassword = await bcrypt.hash(password, 10);
     const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer

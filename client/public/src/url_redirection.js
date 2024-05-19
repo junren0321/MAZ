@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 document.addEventListener('DOMContentLoaded', function() {
     const buttonActions = [
         { id: 'logo-1', url: './index.html' },
@@ -37,3 +38,14 @@ document.addEventListener('DOMContentLoaded', function() {
 //         window.location.href = '../teset/home.html';
 //     });
 // });
+=======
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const signupButton = document.getElementById('register-2');
+
+    signupButton.addEventListener('click', function() {
+        // Navigate to the signup page
+        window.location.href = './login.html';
+    });
+});
+>>>>>>> e30fde2 (prototype)
