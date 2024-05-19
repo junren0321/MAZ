@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  main {
+    width: 80%;
+    margin: auto;
+  }
+  
+  section {
+    margin-bottom: 40px;
+  }
+  
+  #uploadForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+  }
+  
+  #imageGallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  #imageGallery img {
+    max-width: 200px;
+    max-height: 200px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+  
