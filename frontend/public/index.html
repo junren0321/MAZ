@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Upload and Gallery</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Image Upload and Gallery</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Register</h2>
+      <form id="registerForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Register</button>
+      </form>
+    </section>
+    
+    <!-- Login Form -->
+    <section>
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="username" required>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password" required>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+    
+    <button id="logoutButton">Logout</button>
+    <!-- Image Upload Form -->
+    <section>
+      <h2>Upload Your Image</h2>
+      <form id="uploadForm" action="/api/upload" method="POST" enctype="multipart/form-data">
+        <label for="imageFile">Select an image:</label>
+        <input type="file" name="imageFile" id="imageFile" required>
+        <button type="submit">Upload</button>
+      </form>
+    </section>
+
+    <!-- Gallery Section -->
+    <section>
+      <h2>Gallery</h2>
+      <div id="imageGallery">
+        <!-- Images will be displayed here by JavaScript -->
+      </div>
+    </section>
+  </main>
+  <script src="src/scripts.js"></script>
+</body>
+</html>
