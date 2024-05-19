@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+body{
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+header{
+  z-index: 999;
+  position: sticky;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: #ffffff; */
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+}
+
+header nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header nav div:not(.dropdown-menu div):not(.dropdown-menu){
+  color: #000000;
+  font-size: 1.1em;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 20px;
+  margin-top: -5px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  transition: 0.3s;
+  transition-property: background, color;
+}
+
+header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
+  background: linear-gradient(to bottom, #3c1053, #ad5389);
+  color: #fff;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  z-index: 1000;
+  right: 1%;
+  color: #333;
+  text-align: center;
+}
+
+.profile-icon:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu div:not(#guest) {
+  display: block;
+  /* transition: 0.15s; */
+  margin-bottom: 5px;
+  /* text-decoration: none; */
+  /* padding: 8px 12px; */
+}
+
+.dropdown-menu div:not(#guest):hover {
+  /* text-decoration: underline; */
+  font-weight: bold;
+  /* background-color: #f5f5f5; */
+}
+
+#signup-2 {
+  width: 200px;
+  height: 50px;
+  font-size: 1.1em;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  background-color: #7c449b;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  left: 20%;
+  top: 70%;
+  /* transform: translateY(-50%); */
+}
+
+#signup-2:hover {
+  transform: scale(1.1);
+  /* background: linear-gradient(to bottom, #3c1053, #ad5389); */
+}
+
+footer {
+  box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.2);
+  background-color: #7c449b;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
