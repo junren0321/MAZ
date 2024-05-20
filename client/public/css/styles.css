@@ -171,6 +171,12 @@ input[type="password"] {
   color: white;
 }
 
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+a {
 a {
   color: #3c1053;
   text-decoration: none;
@@ -178,6 +184,7 @@ a {
   transition: border-bottom 0.3s ease; /* 添加过渡效果 */
 }
 
+a:hover {
 a:hover {
   border-bottom-color: transparent; /* 悬停时隐藏下划线 */
   /* font-weight: bold; */
