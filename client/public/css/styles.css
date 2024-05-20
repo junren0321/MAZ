@@ -194,14 +194,14 @@ input[type="password"] {
   text-align: center;
 }
 
-redirect {
+a {
   color: #3c1053;
   text-decoration: none;
   border-bottom: 1px solid #3c1053; /* 添加下划线 */
   transition: border-bottom 0.3s ease; /* 添加过渡效果 */
 }
 
-redirect:hover {
+a:hover {
   border-bottom-color: transparent; /* 悬停时隐藏下划线 */
 }
 
