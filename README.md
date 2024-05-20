@@ -33,4 +33,7 @@ Start the server:
 ```bash
 node server.js
 ```
+
+**Remember:** Change the `DB_PASSWORD` in "your\path\to\directory\WebApp_Project\server\.env" to your MySQL password.
+
 This sequence ensures that you first set up the Node.js dependencies, then configure MySQL, and finally run the website.
