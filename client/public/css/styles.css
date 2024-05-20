@@ -10,18 +10,11 @@
   user-select: none;
 }
 
-<<<<<<< HEAD
 body{
   min-height: 100vh;
   overflow-x: hidden;
   cursor: default;
   background-color: rgba(254,248,230,255);
-=======
-.landing-body{
-  min-height: 100vh;
-  overflow-x: hidden;
-  cursor: default;
->>>>>>> e30fde2 (prototype)
 }
 
 header{
@@ -124,52 +117,22 @@ footer {
   padding: 10px 0;
 }
 
-<<<<<<< HEAD
 .login-container,
 .register-container,
 .forgot-container {
-=======
-/* login & register */
-.login-body,
-.register-body {
-  font-family: Arial, sans-serif;
-  background-color: rgba(254,248,230,255);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.login-container,
-.register-container {
->>>>>>> e30fde2 (prototype)
   background: white;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
   width: 400px;
   box-sizing: border-box;
   /* color: #3c1053; */
-=======
-  width: 500px;
-  box-sizing: border-box;
->>>>>>> e30fde2 (prototype)
 }
 
 .form-input {
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
-=======
-label {
-  color: #3c1053;
-}
-
->>>>>>> e30fde2 (prototype)
 input[type="text"],
 input[type="email"],
 input[type="date"],
@@ -182,15 +145,6 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-=======
-.title {
-  color: #3c1053;
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
->>>>>>> e30fde2 (prototype)
 .error-message {
   color: red;
   font-size: 0.9em;
@@ -198,12 +152,8 @@ input[type="password"] {
 }
 
 .login-button,
-<<<<<<< HEAD
 .register-button,
 .forgot-button {
-=======
-.register-button {
->>>>>>> e30fde2 (prototype)
   width: 100%;
   padding: 10px;
   background: linear-gradient(to bottom, #3c1053, #ad5389);
@@ -215,40 +165,20 @@ input[type="password"] {
 }
 
 .login-button:hover,
-<<<<<<< HEAD
 .register-button:hover,
 .forgot-button:hover {
-=======
-.register-button:hover {
->>>>>>> e30fde2 (prototype)
   background: #3c1053;
   color: white;
 }
 
-<<<<<<< HEAD
 a {
-=======
-.login-footer {
-  margin-top: 20px;
-  text-align: center;
-}
-
-redirect {
->>>>>>> e30fde2 (prototype)
   color: #3c1053;
   text-decoration: none;
   border-bottom: 1px solid #3c1053; /* 添加下划线 */
   transition: border-bottom 0.3s ease; /* 添加过渡效果 */
 }
 
-<<<<<<< HEAD
 a:hover {
   border-bottom-color: transparent; /* 悬停时隐藏下划线 */
   /* font-weight: bold; */
 }
-=======
-redirect:hover {
-  border-bottom-color: transparent; /* 悬停时隐藏下划线 */
-}
-
->>>>>>> e30fde2 (prototype)
