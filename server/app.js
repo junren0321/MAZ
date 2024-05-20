@@ -23,3 +23,5 @@ app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)
 >>>>>>> e30fde2 (prototype)
 
 module.exports = app;
+
+module.exports = app;
