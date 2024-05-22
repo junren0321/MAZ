@@ -20,3 +20,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('logo-1').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('about').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('login-2').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
