@@ -42,6 +42,7 @@ function displayCategories() {
 }
 
 const uploadForm = document.getElementById('uploadform');
+
 uploadForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -49,6 +50,12 @@ uploadForm.addEventListener('submit', async (event) => {
     if (authorsarray.length === 0 || categories.length === 0) {
         alert("Please add at least one author and one category.");
         return;
+    }
+
+    const ISBNInput = document.getElementById('isbn').value;
+    if(ISBNInput == ""){
+      alert("Please provide the ISBN.");
+      return;
     }
 
     // Prepare FormData

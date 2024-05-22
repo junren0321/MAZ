@@ -10,18 +10,11 @@
   user-select: none;
 }
 
-<<<<<<< HEAD
-.landing-body{
-  min-height: 100vh;
-  overflow-x: hidden;
-  cursor: default;
-=======
 body{
   min-height: 100vh;
   overflow-x: hidden;
   cursor: default;
   background-color: rgba(254,248,230,255);
->>>>>>> 0e500a87327f8460b502cd73066576327aa1a167
 }
 
 header{
@@ -124,8 +117,18 @@ footer {
   padding: 10px 0;
 }
 
+.required-input::after{
+    content: " *";
+    color: red;
+}
+.optional-input::after {
+    content: " (optional)";
+    color: grey;
+}
+
 .login-container,
 .register-container,
+.upload-container,
 .forgot-container {
   background: white;
   padding: 40px;
@@ -160,6 +163,7 @@ input[type="password"] {
 
 .login-button,
 .register-button,
+.upload-button,
 .forgot-button {
   width: 100%;
   padding: 10px;
@@ -173,6 +177,7 @@ input[type="password"] {
 
 .login-button:hover,
 .register-button:hover,
+.upload-button:hover,
 .forgot-button:hover {
   background: #3c1053;
   color: white;
