@@ -28,6 +28,8 @@ exports.uploadBook = async (req, res) => {
     authors = Array.isArray(authors) ? authors : [];
     tags = Array.isArray(tags) ? tags : [];
 
+    tags = [...new Set(tags)]; // remove duplicates
+    
     const authorsStr = authors.length > 0 ? ',' + authors.join(',') + ',' : ',';
     const tagsStr = tags.length > 0 ? ',' + tags.join(',') + ',' : ',';
 
