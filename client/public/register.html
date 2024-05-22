@@ -1,50 +1,68 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAZ | Register Page</title>
+    <title>MAZ - Register</title>
+    <link rel="icon" type="image/png" href="./img/logo-crop.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/styles.css">
-    </head>
-    <body class="register-body">
-        <div class="title">Register</div>
-        <div class="register-container">
-            <form id="registerform">
-                <div class="form-input">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+</head>
+<body>
+    <header>
+        <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <nav>
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+                <div class="dropdown-menu">
+                    <div id="guest">Guest</div>
+                    <hr style="margin-bottom: 15px;">
+                    <div id="login">Login</div>
+                    <div id="register-1">Register</div>
                 </div>
-                <div class="form-input">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-input">
-                    <label for="birthdate">Date of Birth:</label>
-                    <input type="date" id="birthdate" name="birthdate" max="9999-12-31" required>
-                </div>
-                <div class="form-input">
-                    <label for="security-question">Design Your Security Question:</label>
-                    <input type="text" id="security-question" name="security_question" required>
-                </div>
-                <div class="form-input">
-                    <label for="security-answer">Answer Your Security Question:</label>
-                    <input type="text" id="security-answer" name="security_answer" required>
-                </div>
-                <div class="form-input">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <div id="passwordError" class="error-message"></div>
-                </div>
-                <div class="form-input">
-                    <label for="confirmPassword">Re-Enter Password:</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
-                    <div id="confirmPasswordError" class="error-message"></div>
-                </div>
-                <button class="register-button" type="submit">Register</button>
-            </form>
-        </div>
-        <script src="./src/register.js"></script>
-    </body>
-    </html>
-
-
+            </div>
+        </nav>
+    </header>
+    <img src="./img/login.png" style="width: 35%; position: fixed; top: 15%; left: 12%;">
+    <div class="register-container" style="position: absolute; top: 15%; right: 20%; ">
+        <div style="font-size: 1.5em; text-align: center; margin-bottom: 5px;">Register</div>
+        <form id="registerform">
+            <div class="form-input">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-input">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-input">
+                <label for="birthdate">Date of Birth:</label>
+                <input type="date" id="birthdate" name="birthdate" max="9999-12-31" required>
+            </div>
+            <div class="form-input">
+                <label for="security-question">Design Your Security Question:</label>
+                <input type="text" id="security-question" name="security_question" required>
+            </div>
+            <div class="form-input">
+                <label for="security-answer">Answer Your Security Question:</label>
+                <input type="text" id="security-answer" name="security_answer" required>
+            </div>
+            <div class="form-input">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <div id="passwordError" class="error-message"></div>
+            </div>
+            <div class="form-input">
+                <label for="confirmPassword">Re-Enter Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div id="confirmPasswordError" class="error-message"></div>
+            </div>
+            <button class="register-button" type="submit">Register</button>
+            <div style="margin-top: 20px; text-align: center;">
+                <p>Already have an account? <a href="register.html">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="./src/register.js"></script>
+</body>
+</html>
