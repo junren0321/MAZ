@@ -171,6 +171,14 @@ input[type="password"] {
   color: white;
 }
 
+<<<<<<< HEAD
+=======
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+>>>>>>> 1029564f6ee8775d8c792c1c7c92e87a09bae5fa
 a {
   color: #3c1053;
   text-decoration: none;

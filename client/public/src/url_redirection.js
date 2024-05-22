@@ -1,10 +1,23 @@
-// script.js
 document.addEventListener('DOMContentLoaded', function() {
-    const signupButton = document.getElementById('register-2');
+    const buttonActions = [
+        { id: 'register-1', url: './register.html' },
+        { id: 'login', url: './login.html' },
+        { id: 'register-2', url: './login.html' }
+    ];
 
-    signupButton.addEventListener('click', function() {
-        // Navigate to the signup page
-        window.location.href = './login.html';
+    const added = new Set();
+    
+    buttonActions.forEach(function(action) {
+        if (!added.has(action.id)) {
+            const button = document.getElementById(action.id);
+            if (button) {
+                button.addEventListener('click', function() {
+                    // Navigate to the specified URL
+                    window.location.href = action.url;
+                });
+                added.add(action.id);
+            }
+        }
     });
 });
 
