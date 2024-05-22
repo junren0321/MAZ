@@ -19,7 +19,6 @@
    cd /usr/local/mysql/bin
    ```
 
-<<<<<<< HEAD
 2. Start the MySQL server:
 
     ```bash
@@ -27,9 +26,6 @@
     ```
 
 3. Execute setup script:
-=======
-2. Execute setup script:
->>>>>>> 0deec81 (update README)
    ```bash
    ./mysql -u root -p < /path/to/directory/WebApp_Project/database/setup.sql
    ```
