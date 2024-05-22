@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS images (
     id INT AUTO_INCREMENT PRIMARY KEY,
     filename VARCHAR(255) NOT NULL,
     name VARCHAR(255) NOT NULL,
-    author VARCHAR(255),
+    authors VARCHAR(1000),
     language VARCHAR(50),
     tags TEXT,
 >>>>>>> 22dcb29 (database update)
