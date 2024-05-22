@@ -55,24 +55,24 @@
                     <button type="button" onclick="deleteCategory()">Delete Categories</button>
                 </div>
                 <div class="form-input">
-                    <label class="optional-input" for="publisher">Publisher:</label>
-                    <input type="text" id="publisher" name="publisher">
+                    <label class="required-input" for="publisher">Publisher:</label>
+                    <input type="text" id="publisher" name="publisher" required>
                 </div>
                 <div class="form-input">
-                    <label class="optional-input" for="publish_date">Published on:</label>
-                    <input type="date" id="publish_date" name="publish_date" max="9999-12-31">
+                    <label class="required-input" for="publish_date">Published on:</label>
+                    <input type="date" id="publish_date" name="publish_date" max="9999-12-31" required>
                 </div>
                 <div class="form-input">
-                    <label class="optional-input" for="translated_by">Translator:</label>
-                    <input type="text" id="translated_by" name="translated_by">
+                    <label class="required-input" for="translated_by">Translator:</label>
+                    <input type="text" id="translated_by" name="translated_by" required>
                 </div>
                 <div class="form-input">
-                    <label class="optional-input" for="page_count">Page Count:</label>
-                    <input type="number" id="page_count" name="page_count" min="1" max="1000">
+                    <label class="required-input" for="page_count">Page Count:</label>
+                    <input type="number" id="page_count" name="page_count" min="1" max="1000" required>
                 </div>
                 <div class="form-input">
                     <label class="required-input" for="isbn">ISBN:</label>
-                    <input type="number" id="isbn" name="isbn" min="1000000000" max="9999999999999">
+                    <input type="number" id="isbn" name="isbn" min="1000000000" max="9999999999999" required>
                 </div>
                 <div class="form-input">
                     <label class="optional-input" for="description">Description:</label>
