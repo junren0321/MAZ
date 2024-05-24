@@ -17,7 +17,7 @@ registerForm.addEventListener('submit', async (event) => {
   // Check if email is in a valid format
   if (!emailRegex.test(emailInput)) {
       alert('Please enter a valid email address.');
-      valid = false;
+      valid = false;  
   }
 
   // Check if password is 6-12 characters long and contains only letters and numbers
