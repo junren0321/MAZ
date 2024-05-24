@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const buttonActions = [
+        { id: 'logo-1', url: './index.html' },
         { id: 'register-1', url: './register.html' },
         { id: 'login', url: './login.html' },
         { id: 'register-2', url: './login.html' }
@@ -20,3 +21,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('logo-1').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('about').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('login-2').addEventListener('click', function() {
+//         window.location.href = '../teset/home.html';
+//     });
+// });
