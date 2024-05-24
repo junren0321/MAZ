@@ -117,18 +117,8 @@ footer {
   padding: 10px 0;
 }
 
-.required-input::after{
-    content: " *";
-    color: red;
-}
-.optional-input::after {
-    content: " (optional)";
-    color: grey;
-}
-
 .login-container,
 .register-container,
-.upload-container,
 .forgot-container {
   background: white;
   padding: 40px;
@@ -163,7 +153,6 @@ input[type="password"] {
 
 .login-button,
 .register-button,
-.upload-button,
 .forgot-button {
   width: 100%;
   padding: 10px;
@@ -177,7 +166,6 @@ input[type="password"] {
 
 .login-button:hover,
 .register-button:hover,
-.upload-button:hover,
 .forgot-button:hover {
   background: #3c1053;
   color: white;
