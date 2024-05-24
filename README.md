@@ -70,15 +70,7 @@ node server.js
 
 1. Navigate to MySQL bin directory:
    ```bash
-<<<<<<< HEAD
-<<<<<<< HEAD
    cd "C:\Program Files\MySQL\MySQL Server X.X\bin"
-=======
-   cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
->>>>>>> 02c8720fd461856b2d6087b0a731171557830189
-=======
-   cd "C:\Program Files\MySQL\MySQL Server X.X\bin"
->>>>>>> 1919a9d82d3d40ca62b4d85c9cd705b02e0b88f4
    ```
 
 2. Execute setup script:
@@ -106,8 +98,4 @@ Start the server:
 node server.js
 ```
 
-<<<<<<< HEAD
 **Remember:** Change the `DB_PASSWORD` in "\your\path\to\directory\WebApp_Project\server\.env" to your MySQL password.
-=======
-**Remember:** Change the `DB_PASSWORD` in "\your\path\to\directory\WebApp_Project\server\.env" to your MySQL password.
->>>>>>> 1919a9d82d3d40ca62b4d85c9cd705b02e0b88f4
