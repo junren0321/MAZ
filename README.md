@@ -70,7 +70,11 @@ node server.js
 
 1. Navigate to MySQL bin directory:
    ```bash
+<<<<<<< HEAD
    cd "C:\Program Files\MySQL\MySQL Server X.X\bin"
+=======
+   cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
+>>>>>>> 02c8720fd461856b2d6087b0a731171557830189
    ```
 
 2. Execute setup script:
