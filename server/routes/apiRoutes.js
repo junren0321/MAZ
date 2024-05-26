@@ -12,4 +12,8 @@ router.get('/books', getBooks);
 router.get('/userBooks', authenticateToken, getUserBooks);
 router.get('/searchBooks', searchBooks);
 
+const { submitReview, fetchReviews } = require('../controllers/ReviewController');
+router.post('/reviews', submitReview);
+router.get('/reviews', fetchReviews);
+
 module.exports = router;
