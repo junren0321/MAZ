@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS MAZ;
+CREATE DATABASE pdf_review_db;
 
-USE MAZ;
+USE pdf_review_db;
 
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -15,12 +15,11 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS users (
 >>>>>>> 22dcb29 (database update)
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) UNIQUE NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    birthdate DATE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    security_question VARCHAR(255) NOT NULL,
-    security_answer VARCHAR(255) NOT NULL
+    filename VARCHAR(255) NOT NULL,
+    path VARCHAR(255) NOT NULL,
+    originalname VARCHAR(255) NOT NULL,
+    createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 <<<<<<< HEAD
