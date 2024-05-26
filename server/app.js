@@ -10,6 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../client/public')));
+app.use('./src', express.static(path.join(__dirname, '../client/src')));
+app.use('./css', express.static(path.join(__dirname, '../client/css')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Import and use API routes
