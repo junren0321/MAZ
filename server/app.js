@@ -20,14 +20,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const apiRoutes = require('./routes/apiRoutes');
 app.use('/api', apiRoutes);
 
-const fileRoutes = require('./routes/fileRoutes');
-const { sequelize } = require('./controllers/FileController'); // Importing sequelize to sync database
-app.use('/file', fileRoutes);
-
-sequelize.sync({ alter: true }).then(() => {
-  console.log('Database & tables created!');
-});
-
 module.exports = app;
 
 
