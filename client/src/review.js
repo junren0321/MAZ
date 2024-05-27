@@ -1,68 +1,66 @@
-
-async function uploadFile() {
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-        const response = await fetch(`/file/upload`, {
-            method: 'POST',
-            body: formData,
-        });
-
-        if (response.ok) {
-            alert('File uploaded successfully');
-        } else {
-            alert('File upload failed');
-        }
-    } catch (error) {
-        console.error('Error uploading file:', error);
-    }
-}
-
-async function submitReview() {
-    const fileId = document.getElementById('fileIdInput').value;
-    const review = document.getElementById('reviewInput').value;
+document.getElementById("reviewForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    
+    const bookId = document.getElementById("bookId").value;
+    const userId = document.getElementById("userId").value;
+    const rating = document.getElementById("rating").value;
+    const comment = document.getElementById("comment").value;
 
     try {
-        const response = await fetch(`/api/reviews`, {
+        const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ fileId, review }),
+            body: JSON.stringify({ bookId, userId, rating, comment })
         });
 
-        // if (response.ok) {
-            // alert('Review submitted successfully');
-        // } else {
-        //     alert('Review submission failed');
-        // }
-    } catch (error) {
-        console.error('Error submitting review:', error);
-    }
-    fetchReviews();
-}
+        if (!response.ok) {
+            throw new Error('Failed to add review');
+        }
 
-async function fetchReviews() {
+        const data = await response.json();
+        alert(data.message);
+        document.getElementById("reviewForm").reset();
+        loadReviewsForBook(bookId);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while adding the review');
+    }
+});
+
+async function loadReviewsForBook(bookId) {
     try {
-        const response = await fetch(`/api/reviews`);
+        const response = await fetch(`/api/reviews/book/${bookId}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch reviews for book');
+        }
         const reviews = await response.json();
-
-        const reviewsList = document.getElementById('reviewsList');
-        reviewsList.innerHTML = '';
-
-        reviews.forEach((review) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${review.file.filename}: ${review.review}`;
-            reviewsList.appendChild(listItem);
-        });
+        displayReviews(reviews);
     } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.error('Error:', error);
+        alert('An error occurred while fetching reviews');
     }
 }
 
-// Fetch reviews on page load
-window.onload = fetchReviews;
+function displayReviews(reviews) {
+    const reviewsContainer = document.getElementById("reviewsContainer");
+    reviewsContainer.innerHTML = '';
+
+    if (reviews.length === 0) {
+        reviewsContainer.innerHTML = "<p>No reviews available for this book.</p>";
+        return;
+    }
+
+    const ul = document.createElement("ul");
+    reviews.forEach(review => {
+        const li = document.createElement("li");
+        li.textContent = `User ID: ${review.user_id}, Rating: ${review.rating}, Comment: ${review.comment}`;
+        ul.appendChild(li);
+    });
+    reviewsContainer.appendChild(ul);
+}
+
+// Load reviews for a specific book (you can call this function when the page loads or when needed)
+const bookIdToLoad = 1; // Change this to the desired book ID
+loadReviewsForBook(bookIdToLoad);

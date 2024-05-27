@@ -1,45 +1,47 @@
 const db = require('../config/database');
-const { User } = require('../model/userModel'); // Assuming you have User and Book models defined
-const { Book } = require('../model/bookModel');
-// Define Review Model
-const Review = db.define('Review', {
-  review: {
-    type: db.Sequelize.TEXT,
-    allowNull: false,
-  },
-});
 
-// Define associations
-Review.belongsTo(User, { foreignKey: 'user_id' });
-Review.belongsTo(Book, { foreignKey: 'book_id' });
-
-// Submit a review
-const submitReview = async (req, res) => {
-  try {
-    const { user_id, book_id, review } = req.body;
-
-    // Validate request body
-    if (!user_id || !book_id || !review) {
-      return res.status(400).send('user_id, book_id, and review are required.');
+// Create a new review
+exports.createReview = async (req, res) => {
+    const { bookId, userId, rating, comment } = req.body;
+    
+    try {
+        const [result] = await db.query('INSERT INTO reviews (book_id, user_id, rating, comment) VALUES (?, ?, ?, ?)', [bookId, userId, rating, comment]);
+        const newReviewId = result.insertId;
+        const newReview = { id: newReviewId, book_id: bookId, user_id: userId, rating: rating, comment: comment };
+        res.status(201).json({ message: 'Review created successfully', review: newReview });
+    } catch (error) {
+        console.error('Error creating review:', error);
+        res.status(500).json({ error: 'Failed to create review' });
     }
-
-    const newReview = await Review.create({ user_id, book_id, review });
-    res.status(201).send('Review submitted successfully');
-  } catch (error) {
-    console.error('Error submitting review:', error);
-    res.status(500).send('Error submitting review');
-  }
 };
 
-// Fetch all reviews
-const fetchReviews = async (req, res) => {
-  try {
-    const reviews = await Review.findAll({ include: [User, Book] });
-    res.status(200).json(reviews);
-  } catch (error) {
-    console.error('Error fetching reviews:', error);
-    res.status(500).send('Error fetching reviews');
-  }
+// Update an existing review
+exports.updateReview = async (req, res) => {
+    const { reviewId } = req.params;
+    const { rating, comment } = req.body;
+    
+    try {
+        const [result] = await db.query('UPDATE reviews SET rating = ?, comment = ? WHERE id = ?', [rating, comment, reviewId]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Review not found' });
+        }
+        const updatedReview = { id: reviewId, rating: rating, comment: comment };
+        res.json({ message: 'Review updated successfully', review: updatedReview });
+    } catch (error) {
+        console.error('Error updating review:', error);
+        res.status(500).json({ error: 'Failed to update review' });
+    }
 };
 
-module.exports = { submitReview, fetchReviews, Review};
+// Get reviews for a specific book
+exports.getReviewsForBook = async (req, res) => {
+    const { bookId } = req.params;
+    
+    try {
+        const [rows] = await db.query('SELECT * FROM reviews WHERE book_id = ?', [bookId]);
+        res.json(rows);
+    } catch (error) {
+        console.error('Error getting reviews for book:', error);
+        res.status(500).json({ error: 'Failed to get reviews for book' });
+    }
+};
