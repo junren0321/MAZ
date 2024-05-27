@@ -1,2 +1,12 @@
+# Ignore node_modules directory in the server folder
 server/node_modules/
-server/uploads/
+
+# Ignore all files in server/uploads
+server/uploads/*
+
+# Do not ignore .gitkeep file in server/uploads
+!server/uploads/.gitkeep
+
+# Ignore specific package files in the server folder
+# server/package-lock.json
+# server/package.json
