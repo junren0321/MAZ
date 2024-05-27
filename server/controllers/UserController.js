@@ -76,7 +76,8 @@ exports.login = async (req, res) => {
         const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
         if (users.length > 0 && await bcrypt.compare(password, users[0].password)) {
             const token = jwt.sign({ id: users[0].id, username: users[0].username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.json({ message: 'Login successful', token });
+            res.json({ message: 'Login successful', token, 
+            user: { username: users[0].username, email: users[0].email, birthdate: users[0].birthdate } });
         } else {
             res.status(401).json({ error: 'Invalid email or password' });
         }
