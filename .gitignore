@@ -1,2 +1,12 @@
 server/node_modules/
 server/uploads/
+
+.DS_Store
+client/.DS_Store
+client/css/.DS_Store
+client/src/.DS_Store
+client/public/.DS_Store
+node_modules/
+package-lock.json
+package.json
+server/.Rhistory
