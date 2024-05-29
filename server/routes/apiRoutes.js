@@ -12,4 +12,10 @@ router.get('/books', getBooks);
 router.get('/userBooks', authenticateToken, getUserBooks);
 router.get('/searchBooks', searchBooks);
 
+const { submitReview, fetchReviews, deleteReview, editReview } = require('../controllers/ReviewController');
+router.post('/reviews', submitReview);
+router.get('/reviews/:bookId', fetchReviews);
+router.delete('/reviews/:review', deleteReview);
+router.put('/reviews/:reviewId', editReview);
+// authenticateToken
 module.exports = router;
