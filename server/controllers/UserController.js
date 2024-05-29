@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('../config/database');
+const nodemailer = require('nodemailer');
 
 // User registration
 exports.register = async (req, res) => {
@@ -44,5 +45,63 @@ exports.login = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Database error during login.' });
+    }
+};
+
+// Forgot password
+exports.forgot = async (req, res) => {
+    const { email } = req.body;
+    
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.MAZ_EMAIL,
+            pass: process.env.MAZ_PASS
+        }
+    });
+
+    try {
+        const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        let verification_code = Math.floor(100000 + Math.random() * 999999).toString();
+        if (users.length > 0) {
+            const mailOptions = {
+                from:process.env.MAZ_EMAIL,
+                to: email,
+                subject: 'Password Reset for MAZ',
+                text: `Hi! We received your request for a password change, please provide our website the following verification code: ${verification_code}`
+            };
+
+            transporter.sendMail(mailOptions, (error, info) => {
+                if(error){
+                    console.error('Error sending email:', error);
+                    return res.status(500).json({ error: 'Error sending email.'});
+                } else {
+                    console.log('Email sent:', info.response);
+                    return res.json({ message: 'Please check your email for the verification code.', verification_code, userID: users.user_id});
+                }
+            });
+        } else {
+            res.status(401).json({ error: 'Invalid email'});
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Database error during forgot password.' });
+    }
+};
+
+// Forgot password Verification
+exports.changepass = async (req, res) => {
+    const { new_password, userID } = req.body;
+    const query = `
+    UPDATE users
+    SET password = ?
+    WHERE id = ?;
+    `;
+    try {
+        await db.query(query, [new_password, userID]);
+        res.sendStatus(204); // No content response for successful update
+    } catch (error) {
+        console.error('Error editing password:', error);
+        res.status(500).json({ error: 'Error editing password' });
     }
 };

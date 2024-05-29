@@ -166,4 +166,4 @@ window.onload = function() {
 };
 
 
-// modified, rating
+// rating
