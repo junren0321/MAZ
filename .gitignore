@@ -10,3 +10,9 @@ server/uploads/*
 # Ignore specific package files in the server folder
 # server/package-lock.json
 # server/package.json
+
+server.crt
+server.key
+
+localhost.pem
+localhost-key.pem
