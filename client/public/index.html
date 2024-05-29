@@ -6,11 +6,12 @@
     <title>MAZ | Your Picture Book Oasis</title>
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div id="announce">announcement</div>
             <div id="popular">popular</div>
@@ -18,9 +19,13 @@
             <div id="contact">contact</div>
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
+                    <div id="username"></div>
                     <hr style="margin-bottom: 15px;">
+                    <div id="profile">Profile</div>
+                    <div id="setting">Setting</div>
+                    <div id="logout">Logout</div>
                     <div id="login">Login</div>
                     <div id="register-1">Register</div>
                 </div>
@@ -34,7 +39,8 @@
         Journey Through Stories
         Share the Magic
     </pre>
-    <div id="register-2">Get Started &#8594;</div>
+    <div class="magic-button" id="register-2" style="position: absolute; left: 20%; top: 70%;">
+        Get Started &#8594;</div>
     <div style="margin-bottom: 100%;"></div> 
     <!-- is there any better way to achieve the effect above -->
     <footer>
@@ -42,6 +48,7 @@
         <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
         <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
     </footer>
-    <script src = "./src/url_redirection.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src = "../src/url_redirection.js"></script>
 </body>
 </html>
