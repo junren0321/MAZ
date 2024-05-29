@@ -11,7 +11,7 @@ const upload = multer({ storage });
 // Book upload
 exports.uploadBook = async (req, res) => {
     // Log that the upload function was called
-    console.log('Upload function called:', req.body);
+    // console.log('Upload function called:', req.body);
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded.' });
     }
@@ -23,8 +23,7 @@ exports.uploadBook = async (req, res) => {
     // Handle authors and tags: ensure they are arrays and convert them to comma-separated strings
     let authors = req.body.authors;
     let tags = req.body.tags;
-    console.log('author array',authors);
-    console.log('tag array',tags);
+
     // Check if authors and tags exist and are arrays, otherwise treat them as empty arrays
     authors = Array.isArray(authors) ? authors : [authors];
     tags = Array.isArray(tags) ? tags : [tags];
