@@ -76,7 +76,6 @@ async function fetchReviews(bookId) {
             // Concatenate username and review text
             const reviewDate = new Date(review.createdAt);
             const formattedDate = `${reviewDate.getFullYear()}/${reviewDate.getMonth() + 1}/${reviewDate.getDate()}`;
-
             listItem.innerHTML = `${review.username}<br>: ${review.review}`;
             // console.log(listItem.textContent);
            
