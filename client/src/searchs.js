@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
     searchResults.forEach(book => {
         const bookElement = document.createElement('div');
         bookElement.className = 'book-result';
-<<<<<<< HEAD
 
         // 確保 book.authors 是一個數組並處理未定義的情況
         const bookAuthors = Array.isArray(book.author) ? book.author.join(', ') : 'Unknown Author';
@@ -45,16 +44,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }).catch(error => {
             console.error('Error loading PDF:', error);
         });
-=======
-        bookElement.innerHTML = `
-            <img src="${book.cover}" alt="${book.title} cover" onclick="viewBook(${book.id})">
-            <h2>${book.title}</h2>
-            <p>Author: ${Array.isArray(book.author) ? book.author.join(', ') : book.author || 'Unknown'}</p>
-            <p>Language: ${book.language}</p>
-            <p>Theme: ${Array.isArray(book.theme) ? book.theme.slice(0, 3).join(', ') : book.theme || 'Unknown'}</p>
-        `;
-        resultsContainer.appendChild(bookElement);
->>>>>>> 2216c6e (huge updates)
     });
 });
 

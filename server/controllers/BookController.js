@@ -23,7 +23,8 @@ exports.uploadBook = async (req, res) => {
     // Handle authors and tags: ensure they are arrays and convert them to comma-separated strings
     let authors = req.body.authors;
     let tags = req.body.tags;
-
+    console.log('author array',authors);
+    console.log('tag array',tags);
     // Check if authors and tags exist and are arrays, otherwise treat them as empty arrays
     authors = Array.isArray(authors) ? authors : [authors];
     tags = Array.isArray(tags) ? tags : [tags];
