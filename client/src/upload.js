@@ -27,6 +27,7 @@ function appendCategory() {
   const selectedCategory = categorySelect.value.trim(); // Assuming a single selection for simplicity
   if (selectedCategory && !categories.includes(selectedCategory)) {
       categories.push(selectedCategory); // Add to array if not already included
+    //   categorySelect.value = "";
       displayCategories(); // Update the display
   }
 }
@@ -60,6 +61,8 @@ uploadForm.addEventListener('submit', async (event) => {
 
     // Prepare FormData
     const formData = new FormData(uploadForm);
+    formData.delete('author');
+    formData.delete('tags');
     authorsarray.forEach(author => formData.append('authors', author));
     categories.forEach(category => formData.append('tags', category));
 
