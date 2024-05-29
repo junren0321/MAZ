@@ -18,8 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 'upload', url: './upload.html' }
     ];
 
+    const linksToUpdate = [
+        { id: 'register-link', url: './register.html' },
+        { id: 'forgot-password-link', url: './forgot_password.html' },
+        { id: 'login-link', url: './login.html' } // Added comma here
+    ];
+
     const added = new Set();
-    
+
     buttonActions.forEach(function(action) {
         if (!added.has(action.id)) {
             const button = document.getElementById(action.id);
@@ -30,6 +36,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 added.add(action.id);
             }
+        }
+    });
+
+    // Update href attributes of specified links
+    linksToUpdate.forEach(function(link) {
+        const elem = document.getElementById(link.id);
+        if (elem) {
+            elem.href = link.url;
         }
     });
 });
@@ -109,4 +123,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-  

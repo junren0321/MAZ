@@ -27,6 +27,7 @@ function appendCategory() {
   const selectedCategory = categorySelect.value.trim(); // Assuming a single selection for simplicity
   if (selectedCategory && !categories.includes(selectedCategory)) {
       categories.push(selectedCategory); // Add to array if not already included
+    //   categorySelect.value = "";
       displayCategories(); // Update the display
   }
 }
@@ -45,7 +46,12 @@ const uploadForm = document.getElementById('uploadform');
 
 uploadForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-
+    const token = localStorage.getItem('jwt');
+    if (!token) {
+        // Optionally notify the user they need to log in
+        alert('You need to be logged in to upload a picture book.');
+        return;
+    }
     // Validate input
     if (authorsarray.length === 0 || categories.length === 0) {
         alert("Please add at least one author and one category.");
@@ -60,11 +66,11 @@ uploadForm.addEventListener('submit', async (event) => {
 
     // Prepare FormData
     const formData = new FormData(uploadForm);
+    formData.delete('author');
+    formData.delete('tags');
     authorsarray.forEach(author => formData.append('authors', author));
     categories.forEach(category => formData.append('tags', category));
 
-    // Fetch setup
-    const token = localStorage.getItem('jwt');
     try {
         const response = await fetch('/api/upload', {
             method: 'POST',

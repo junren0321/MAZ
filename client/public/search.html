@@ -10,79 +10,84 @@
     <link rel="stylesheet" href="../css/search.css">
 </head>
 <body>
-    <header>
-        <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
-        <nav>
-            <div id="announce">announcement</div>
-            <div id="popular">popular</div>
-            <div id="about">about</div>
-            <div id="contact">contact</div>
-            <div class="profile-icon">
-                <i class="fas fa-user"></i>
-                <div class="dropdown-menu">
-                    <div id="guest">Guest</div>
-                    <hr style="margin-bottom: 15px;">
-                    <div id="login">Login</div>
-                    <div id="register-1">Register</div>
-                </div>
+<header>
+    <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+    <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+    <nav>
+        <div id="announce">announcement</div>
+        <div id="popular">popular</div>
+        <div id="about">about</div>
+        <div id="contact">contact</div>
+        <div class="profile-icon">
+            <i class="fas fa-user"></i>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <div id="guest">Guest</div>
+                <div id="username"></div>
+                <hr style="margin-bottom: 15px;">
+                <div id="profile">Profile</div>
+                <div id="setting">Setting</div>
+                <div id="logout">Logout</div>
+                <div id="login">Login</div>
+                <div id="register-1">Register</div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <div class="left-container">
-            <h1>Book Search</h1>
-            <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" id="name" name="title">
-            </div>
-            <div class="form-group">
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author">
-            </div>
-            <div class="form-group">
-                <label for="isbn">ISBN:</label>
-                <input type="text" id="isbn" name="isbn">
-            </div>
-            <div class="form-group">
-                <label for="theme">Theme:</label>
-                <div id="theme-input-container" class="theme-input-container">
-                    <div id="selected-tags" class="selected-themes"></div>
-                    <input type="hidden" id="theme" name="theme">
-                </div>
-                <div class="theme-buttons">
-                    <button class="theme-button" id="theme-1">Friendship</button>
-                    <button class="theme-button" id="theme-2">Adventure</button>
-                    <button class="theme-button" id="theme-3">Character</button>
-                    <button class="theme-button" id="theme-4">Life Lessons</button>
-                    <button class="theme-button" id="theme-5">History</button>
-                    <button class="theme-button" id="theme-6">Imagination</button>
-                    <button class="theme-button" id="theme-7">Emotions</button>
-                    <button class="theme-button" id="theme-8">Nature</button>
-                    <button class="theme-button" id="theme-9">Art</button>
-                    <button class="theme-button" id="theme-10">Science Fiction</button>
-                    <button class="theme-button" id="theme-11">Inspirational</button>
-                    <button class="theme-button" id="theme-12">Others</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="language">Language:</label>
-                <input type="text" id="language" name="language">
-            </div>
-            <button class="search-button">Search</button>
         </div>
-        <div class="right-container" id="search-results">
+    </nav>
+</header>
+<div class="container">
+    <div class="left-container">
+        <h1>Book Search</h1>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="name" name="title">
         </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn">
+        </div>
+        <div class="form-group">
+            <label for="theme">Theme:</label>
+            <div id="theme-input-container" class="theme-input-container">
+                <div id="selected-tags" class="selected-themes"></div>
+                <input type="hidden" id="theme" name="theme">
+            </div>
+            <div class="theme-buttons">
+                <button class="theme-button" id="theme-1">Friendship</button>
+                <button class="theme-button" id="theme-2">Adventure</button>
+                <button class="theme-button" id="theme-3">Character</button>
+                <button class="theme-button" id="theme-4">Life Lessons</button>
+                <button class="theme-button" id="theme-5">History</button>
+                <button class="theme-button" id="theme-6">Imagination</button>
+                <button class="theme-button" id="theme-7">Emotions</button>
+                <button class="theme-button" id="theme-8">Nature</button>
+                <button class="theme-button" id="theme-9">Art</button>
+                <button class="theme-button" id="theme-10">Science Fiction</button>
+                <button class="theme-button" id="theme-11">Inspirational</button>
+                <button class="theme-button" id="theme-12">Others</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="language">Language:</label>
+            <input type="text" id="language" name="language">
+        </div>
+        <button class="search-button">Search</button>
     </div>
-    <div style="margin-bottom: 100%;"></div>
-    <footer>
-        <img src="./img/logo-reverse.png" style="width:15%; margin-top: 5px;">
-        <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
-        <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
-    </footer>
-    <script src = "../src/url_redirection.js"></script>
-    <script src="../src/search_options.js"></script>
-    <script src="../src/searchs.js"></script>
-    <script>
-</script>
+    <div class="right-container" id="search-results">
+    </div>
+</div>
+<div style="margin-bottom: 100%;"></div>
+<footer>
+    <img src="./img/logo-reverse.png" style="width:15%; margin-top: 5px;">
+    <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
+    <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script src = "../src/url_redirection.js"></script>
+<script src="../src/search_options.js"></script>
+<script src="../src/searchs.js"></script>
 </body>
 </html>
