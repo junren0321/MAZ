@@ -40,7 +40,7 @@
 2. Initialize npm and install required packages:
    ```bash
    npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors https
+   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors
    ```
 
 #### Running the website:
@@ -88,7 +88,7 @@ node server.js
 2. Initialize npm and install required packages:
    ```bash
    npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors https
+   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors
    ```
 
 #### Running the website:

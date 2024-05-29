@@ -1,82 +1,47 @@
-// controllers/reviewController.js
-
 const db = require('../config/database');
 
-const submitReview = async (req, res) => {
-    const { username, bookId, review } = req.body;
+// Create a new review
+exports.createReview = async (req, res) => {
+    const { bookId, userId, rating, comment } = req.body;
+    
     try {
-        const [result] = await db.query(
-            'INSERT INTO Reviews (username, bookId, review) VALUES (?, ?, ?)',
-            [username, bookId, review]
-        );
-        res.status(201).json({ message: 'Review submitted successfully', reviewId: result.insertId });
+        const [result] = await db.query('INSERT INTO reviews (book_id, user_id, rating, comment) VALUES (?, ?, ?, ?)', [bookId, userId, rating, comment]);
+        const newReviewId = result.insertId;
+        const newReview = { id: newReviewId, book_id: bookId, user_id: userId, rating: rating, comment: comment };
+        res.status(201).json({ message: 'Review created successfully', review: newReview });
     } catch (error) {
-        console.error('Error submitting review:', error);
-        res.status(500).json({ error: 'Error submitting review', details: error.message });
+        console.error('Error creating review:', error);
+        res.status(500).json({ error: 'Failed to create review' });
     }
 };
 
-const fetchReviews = async (req, res) => {
-    const bookId = req.params.bookId;
-    const query = `
-        SELECT * 
-        FROM Reviews 
-        WHERE bookId = ?;
-    `;
+// Update an existing review
+exports.updateReview = async (req, res) => {
+    const { reviewId } = req.params;
+    const { rating, comment } = req.body;
+    
     try {
-                const results = await db.query(query, [bookId]);
-                // console.log(results, bookId);
-                res.status(200).json(results);
-            } catch (error) {
-                console.error('Error fetching reviews:', error);
-                res.status(500).json({ error: 'Error fetching reviews' });
-            }
-    // db.query(query, [bookId], (err, results) => {
-    //     if (err) {
-    //         res.status(500).send(err);
-    //     } else {
-    //         res.json(results);
-    //     }
-    // });
-    // try {
-    //     const [reviews] = await db.query('SELECT * FROM Reviews');
-    //     res.status(200).json(reviews);
-    // } catch (error) {
-    //     console.error('Error fetching reviews:', error);
-    //     res.status(500).json({ error: 'Error fetching reviews' });
-    // }
-};
-
-const deleteReview = async (req, res) =>{
-    const review = req.params.review;
-    const query = `
-        DELETE FROM Reviews 
-        WHERE review = ?;
-    `;
-    try {
-        await db.query(query, [review]);
-        res.sendStatus(204); // No content response for successful deletion
+        const [result] = await db.query('UPDATE reviews SET rating = ?, comment = ? WHERE id = ?', [rating, comment, reviewId]);
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: 'Review not found' });
+        }
+        const updatedReview = { id: reviewId, rating: rating, comment: comment };
+        res.json({ message: 'Review updated successfully', review: updatedReview });
     } catch (error) {
-        console.error('Error deleting review:', error);
-        res.status(500).json({ error: 'Error deleting review' });
+        console.error('Error updating review:', error);
+        res.status(500).json({ error: 'Failed to update review' });
     }
 };
 
-const editReview = async (req, res) => {
-    const reviewId = req.params.reviewId;
-    const { review } = req.body;
-    const query = `
-        UPDATE Reviews 
-        SET review = ? 
-        WHERE id = ?;
-    `;
+// Get reviews for a specific book
+exports.getReviewsForBook = async (req, res) => {
+    const { bookId } = req.params;
+    
     try {
-        await db.query(query, [review, reviewId]);
-        res.sendStatus(204); // No content response for successful update
+        const [rows] = await db.query('SELECT * FROM reviews WHERE book_id = ?', [bookId]);
+        res.json(rows);
     } catch (error) {
-        console.error('Error editing review:', error);
-        res.status(500).json({ error: 'Error editing review' });
+        console.error('Error getting reviews for book:', error);
+        res.status(500).json({ error: 'Failed to get reviews for book' });
     }
 };
-
-module.exports = { submitReview, fetchReviews, deleteReview, editReview };

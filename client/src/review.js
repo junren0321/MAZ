@@ -1,138 +1,64 @@
-localStorage.setItem('currentUser', 'abc');
-localStorage.setItem('currentBookId', '2');
-
-async function submitReview() {
+document.getElementById("reviewForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
     
-    const currentUser = localStorage.getItem('currentUser');
-    const currentbookId = localStorage.getItem('currentBookId');
-    // const token = localStorage.getItem('jwt');
-    // if (!currentUser || !token) {
-    //     // Optionally notify the user they need to log in
-    //     alert('You need to be logged in to submit a review.');
-    //     return;
-    // }
-    const reviewInput = document.getElementById('reviewInput');
-    const reviewText = reviewInput.value.trim();
+    const bookId = document.getElementById("bookId").value;
+    const userId = document.getElementById("userId").value;
+    const rating = document.getElementById("rating").value;
+    const comment = document.getElementById("comment").value;
 
-    if (!reviewText) {
-        // alert('Review cannot be empty');
-        reviewInput.value = '';
-        return;
-    }
-    try{    
-        const response = await fetch(`/api/reviews`, {
+    try {
+        const response = await fetch('/api/reviews', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 
-                username: currentUser, 
-                bookId: currentbookId,
-                review: document.getElementById('reviewInput').value
-            }),
+            body: JSON.stringify({ bookId, userId, rating, comment })
         });
 
+        if (!response.ok) {
+            throw new Error('Failed to add review');
+        }
 
-        if (response.ok) {
-           reviewInput.value = '';
-        
-            // alert('Review submitted successfully');
-        } 
-        // else {
-        //     alert('Review submission failed');
-        // }
-        }catch (error) {
-        console.error('Error submitting review:', error);
-    }
-    fetchReviews(currentbookId);
-}
-
-document.getElementById('reviewInput').addEventListener('keydown', async function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent default behavior of Enter key (e.g., inserting a newline)
-        await submitReview(); // Call the submitReview function
+        const data = await response.json();
+        alert(data.message);
+        document.getElementById("reviewForm").reset();
+        loadReviewsForBook(bookId);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred while adding the review');
     }
 });
 
-async function fetchReviews(bookId) {
+async function loadReviewsForBook(bookId) {
     try {
-        // const bookId = localStorage.getItem('currentBookId');
-    //  // Assuming bookId is stored in localStorage
-    //     if (!bookId) {
-    //         console.error('No book ID found in localStorage.');
-    //         return;
-    //     }   
-
-        // const response = await fetch(`api/reviews/${bookId}`);
-        const response = await fetch(`api/reviews/${bookId}`);
+        const response = await fetch(`/api/reviews/book/${bookId}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch reviews for book');
+        }
         const reviews = await response.json();
-        // console.log(reviews);
-
-        const reviewsList = document.getElementById('reviewsList');
-        reviewsList.innerHTML = '';
-        
-        // let index = 0;
-        reviews[0].forEach((review) => {
-            // console.log(review);
-            const listItem = document.createElement('li');
-            // Concatenate username and review text
-            const reviewDate = new Date(review.createdAt);
-            const formattedDate = `${reviewDate.getFullYear()}/${reviewDate.getMonth() + 1}/${reviewDate.getDate()}`;
-            // listItem.textContent = `${review.username}: ${review.review}    ${formattedDate}`;
-            // listItem.textContent = `${review.username}: ${review.review}       ${new Date(review.createdAt).toLocaleString()}`;
-            // console.log(review.username);
-            // listItem.textContent = `${review.username}: ${review.review}`;
-            listItem.innerHTML = `${review.username}<br>: ${review.review}`;
-            // console.log(listItem.textContent);
-           
-            const timestampSpan = document.createElement('span');
-            timestampSpan.classList.add('timestamp');
-            timestampSpan.textContent = formattedDate; // Your formatted timestamp value
-            listItem.appendChild(timestampSpan);
-            
-            const editButton = document.createElement('button');
-            editButton.textContent = 'Edit';
-            editButton.classList.add('edit-button');
-            editButton.innerHTML = '<i class="fas fa-pen"></i>';
-            editButton.addEventListener('click', () => editReview(review.id, review.review));
-            listItem.appendChild(editButton);
-
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.classList.add('delete-button');
-            deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-            deleteButton.addEventListener('click', () => deleteReview(review.review));
-            listItem.appendChild(deleteButton);
-
-            reviewsList.appendChild(listItem);
-            // index++;
-            // console.log(index);
-        });
+        displayReviews(reviews);
     } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.error('Error:', error);
+        alert('An error occurred while fetching reviews');
     }
 }
 
-async function deleteReview(review) {
-    try {
-        // const token = localStorage.getItem('jwt');
-        const response = await fetch(`/api/reviews/${review}`, {
-            method: 'DELETE',
-            // headers: {
-            //     // 'Authorization': `Bearer ${token}`
-            // }
-        });
-        if (response.ok) {
-            // If the deletion is successful, fetch and display reviews again
-            const currentbookId = localStorage.getItem('currentBookId');
-            fetchReviews(currentbookId);
-        } else {
-            console.error('Failed to delete review');
-        }
-    } catch (error) {
-        console.error('Error deleting review:', error);
+function displayReviews(reviews) {
+    const reviewsContainer = document.getElementById("reviewsContainer");
+    reviewsContainer.innerHTML = '';
+
+    if (reviews.length === 0) {
+        reviewsContainer.innerHTML = "<p>No reviews available for this book.</p>";
+        return;
     }
+
+    const ul = document.createElement("ul");
+    reviews.forEach(review => {
+        const li = document.createElement("li");
+        li.textContent = `User ID: ${review.user_id}, Rating: ${review.rating}, Comment: ${review.comment}`;
+        ul.appendChild(li);
+    });
+    reviewsContainer.appendChild(ul);
 }
 
 async function editReview(reviewId, currentReview) {
