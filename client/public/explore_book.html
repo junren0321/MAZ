@@ -6,8 +6,8 @@
     <title>MAZ - Book Viewer</title>
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/explore_book.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/explore_book.css">
 </head>
 <body>
     <header>
@@ -47,6 +47,16 @@
                     <p><strong>Page Count:</strong> <span id="book-count"></span></p>
                     <p><strong>Description:</strong> <span id="book-description"></span></p>
                     <a href="view.html" class="view-book">View Book</a>
+                    <!-- <a href="review.html" class="view-book">Review</a> -->
+                    <div class="reviews-section">
+                        <h2>Reviews</h2>
+                        <span class="timestamp"></span>
+                        <ul id="reviewsList"></ul>
+                    </div>
+                    <div class="review-section">
+                        <textarea id="reviewInput" placeholder="Write your review here"></textarea>
+                        <button onclick="submitReview()">Submit Review</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,7 +68,8 @@
         <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-    <script src = "./src/url_redirection.js"></script>
-    <script src = "./src/b.js"></script>
+    <script src = "../src/url_redirection.js"></script>
+    <script src="../src/review.js"></script>
+    <script src = "../src/b.js"></script>
 </body>
 </html>
