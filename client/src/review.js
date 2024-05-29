@@ -1,16 +1,19 @@
-localStorage.setItem('currentUser', 'abc');
-localStorage.setItem('currentBookId', '2');
+// Fetch reviews on page load
+window.onload = function() {
+    const bookId = localStorage.getItem('bookId');/* Retrieve bookId from somewhere */;
+    fetchReviews(bookId);
+};
 
 async function submitReview() {
-    
-    const currentUser = localStorage.getItem('currentUser');
-    const currentbookId = localStorage.getItem('currentBookId');
-    // const token = localStorage.getItem('jwt');
-    // if (!currentUser || !token) {
-    //     // Optionally notify the user they need to log in
-    //     alert('You need to be logged in to submit a review.');
-    //     return;
-    // }
+    const userObject = JSON.parse(localStorage.getItem('user'));
+    const currentUser = userObject ? userObject.username : null;
+
+    const currentbookId = localStorage.getItem('bookId');
+    const token = localStorage.getItem('jwt');
+    if (!currentUser || !token) {
+        alert('You need to be logged in to submit a review.');
+        return;
+    }
     const reviewInput = document.getElementById('reviewInput');
     const reviewText = reviewInput.value.trim();
 
@@ -24,7 +27,7 @@ async function submitReview() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 
                 username: currentUser, 
@@ -37,12 +40,12 @@ async function submitReview() {
         if (response.ok) {
            reviewInput.value = '';
         
-            // alert('Review submitted successfully');
+            alert('Review submitted successfully');
         } 
-        // else {
-        //     alert('Review submission failed');
-        // }
-        }catch (error) {
+        else {
+            alert('Review submission failed');
+        }
+    }catch (error) {
         console.error('Error submitting review:', error);
     }
     fetchReviews(currentbookId);
@@ -57,18 +60,12 @@ document.getElementById('reviewInput').addEventListener('keydown', async functio
 
 async function fetchReviews(bookId) {
     try {
-        // const bookId = localStorage.getItem('currentBookId');
-    //  // Assuming bookId is stored in localStorage
-    //     if (!bookId) {
-    //         console.error('No book ID found in localStorage.');
-    //         return;
-    //     }   
 
-        // const response = await fetch(`api/reviews/${bookId}`);
         const response = await fetch(`api/reviews/${bookId}`);
         const reviews = await response.json();
         // console.log(reviews);
-
+        const userObject = JSON.parse(localStorage.getItem('user'));
+        const currentUser = userObject ? userObject.username : null;
         const reviewsList = document.getElementById('reviewsList');
         reviewsList.innerHTML = '';
         
@@ -79,10 +76,7 @@ async function fetchReviews(bookId) {
             // Concatenate username and review text
             const reviewDate = new Date(review.createdAt);
             const formattedDate = `${reviewDate.getFullYear()}/${reviewDate.getMonth() + 1}/${reviewDate.getDate()}`;
-            // listItem.textContent = `${review.username}: ${review.review}    ${formattedDate}`;
-            // listItem.textContent = `${review.username}: ${review.review}       ${new Date(review.createdAt).toLocaleString()}`;
-            // console.log(review.username);
-            // listItem.textContent = `${review.username}: ${review.review}`;
+
             listItem.innerHTML = `${review.username}<br>: ${review.review}`;
             // console.log(listItem.textContent);
            
@@ -90,20 +84,23 @@ async function fetchReviews(bookId) {
             timestampSpan.classList.add('timestamp');
             timestampSpan.textContent = formattedDate; // Your formatted timestamp value
             listItem.appendChild(timestampSpan);
-            
-            const editButton = document.createElement('button');
-            editButton.textContent = 'Edit';
-            editButton.classList.add('edit-button');
-            editButton.innerHTML = '<i class="fas fa-pen"></i>';
-            editButton.addEventListener('click', () => editReview(review.id, review.review));
-            listItem.appendChild(editButton);
+            if (currentUser === review.username){
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Edit';
+                editButton.classList.add('edit-button');
+                editButton.innerHTML = '<i class="fas fa-pen"></i>';
+                editButton.addEventListener('click', () => editReview(review.id, review.review));
+                listItem.appendChild(editButton);
 
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.classList.add('delete-button');
-            deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
-            deleteButton.addEventListener('click', () => deleteReview(review.review));
-            listItem.appendChild(deleteButton);
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('delete-button');
+                deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                deleteButton.addEventListener('click', () => deleteReview(review.id));
+
+                listItem.appendChild(deleteButton);
+            }
+            
 
             reviewsList.appendChild(listItem);
             // index++;
@@ -114,19 +111,14 @@ async function fetchReviews(bookId) {
     }
 }
 
-async function deleteReview(review) {
+async function deleteReview(reviewId) {
     try {
-        // const token = localStorage.getItem('jwt');
-        const response = await fetch(`/api/reviews/${review}`, {
+        const response = await fetch(`/api/reviews/${reviewId}`, {
             method: 'DELETE',
-            // headers: {
-            //     // 'Authorization': `Bearer ${token}`
-            // }
         });
         if (response.ok) {
-            // If the deletion is successful, fetch and display reviews again
-            const currentbookId = localStorage.getItem('currentBookId');
-            fetchReviews(currentbookId);
+            const bookId = localStorage.getItem('bookId');
+            fetchReviews(bookId);
         } else {
             console.error('Failed to delete review');
         }
@@ -147,8 +139,8 @@ async function editReview(reviewId, currentReview) {
                 body: JSON.stringify({ review: newReviewText })
             });
             if (response.ok) {
-                const currentBookId = localStorage.getItem('currentBookId');
-                fetchReviews(currentBookId);
+                const bookId = localStorage.getItem('bookId');
+                fetchReviews(bookId);
             } else {
                 console.error('Failed to edit review');
             }
@@ -157,13 +149,5 @@ async function editReview(reviewId, currentReview) {
         }
     }
 }
-
-
-// Fetch reviews on page load
-window.onload = function() {
-    const bookId = localStorage.getItem('currentBookId');/* Retrieve bookId from somewhere */;
-    fetchReviews(bookId);
-};
-
 
 // modified, rating

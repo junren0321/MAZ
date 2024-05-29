@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { register, login } = require('../controllers/UserController');
-const { uploadBook, getBooks, upload, getUserBooks, searchBooks} = require('../controllers/BookController');
-// const searchBooks = require('../controllers/SearchController');
+const { uploadBook, getBooks, upload, getUserBooks, searchBooks } = require('../controllers/BookController');
 const authenticateToken = require('../util/authMiddleware');
 
 router.post('/register', register);
