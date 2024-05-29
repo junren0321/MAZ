@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.review-section, .reviews-section {
+  margin: 20px 0;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  background-color: #e9ecef;
+  margin: 5px 0;
+}
+
+li {
+  position: relative; /* Add relative positioning */
+}
+
+button.delete-button, button.edit-button {
+  position: absolute;
+  top: 50%;
+  /* right: 10px; Adjust right positioning as needed */
+  transform: translateY(-50%); /* Center vertically */
+  /* background-color/: #dc3545; Bootstrap danger color */
+  background-color: transparent; /* Make button background transparent */
+  border: none; /* Remove button border */
+  cursor: pointer; /* Pointer cursor for better UX */
+  color: #dc3545; /* Color of the icon */
+  padding: 5px; /* Reduce padding for smaller hitbox */
+  font-size: 12px; /* Reduce font size */
+
+}
+
+button.edit-button {
+  right: 2%;
+}
+
+button.delete-button {
+  right: 0%;
+}
+
+button.delete-button:hover, button.edit-button:hover {
+  /* background-color: #c82333; Darker shade on hover */
+  background-color: transparent
+}
+
+.timestamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #6c757d; /* Adjust color as needed */
+  font-size: 12px; /* Adjust font size as needed */
+}
+
+.rating-container {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 25px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star.selected {
+  color: #f1c40f;
+}
