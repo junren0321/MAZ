@@ -13,6 +13,7 @@ server.key
 
 localhost.pem
 localhost-key.pem
+server/uploads/
 
 .DS_Store
 client/.DS_Store
