@@ -9,7 +9,7 @@ router.post('/register', register);
 router.post('/login', login);
 router.post('/upload', authenticateToken, upload.single('pdfupload'), uploadBook);
 router.get('/books', getBooks);
-router.get('/userBooks', authenticateToken, getUserBooks);
+router.get('/userBooks',    n, getUserBooks);
 router.get('/searchBooks', searchBooks);
 
 const { submitReview, fetchReviews, deleteReview, editReview } = require('../controllers/ReviewController');
