@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const bookPageCount = document.getElementById('book-count');
         const bookDescription = document.getElementById('book-description');
 
-        bookCover.src = book.cover;
+        bookCover.src = book.url;
         bookName.textContent = book.name;
         bookAuthors.textContent = book.authors.join(', ');
         bookLanguage.textContent = book.language;
