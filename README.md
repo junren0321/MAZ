@@ -19,7 +19,13 @@
    cd /usr/local/mysql/bin
    ```
 
-2. Execute setup script:
+2. Start the MySQL server:
+
+    ```bash
+    sudo /usr/local/mysql/support-files/mysql.server start
+    ```
+
+3. Execute setup script:
    ```bash
    ./mysql -u root -p < /path/to/directory/WebApp_Project/database/setup.sql
    ```
@@ -34,7 +40,7 @@
 2. Initialize npm and install required packages:
    ```bash
    npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv
+   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors
    ```
 
 #### Running the website:
@@ -64,7 +70,7 @@ node server.js
 
 1. Navigate to MySQL bin directory:
    ```bash
-   cd "C:\Program Files\MySQL\MySQL Server 8.0\bin"
+   cd "C:\Program Files\MySQL\MySQL Server X.X\bin"
    ```
 
 2. Execute setup script:
@@ -82,7 +88,7 @@ node server.js
 2. Initialize npm and install required packages:
    ```bash
    npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv
+   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors
    ```
 
 #### Running the website:

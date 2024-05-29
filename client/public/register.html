@@ -6,7 +6,7 @@
     <title>MAZ - Register</title>
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
@@ -40,12 +40,12 @@
                 <input type="date" id="birthdate" name="birthdate" max="9999-12-31" required>
             </div>
             <div class="form-input">
-                <label class="required-input" for="security-question">Design Your Security Question:</label>
-                <input type="text" id="security-question" name="security_question" required>
+                <label for="security_question">Design Your Security Question:</label>
+                <input type="text" id="security_question" name="security_question" required>
             </div>
             <div class="form-input">
-                <label class="required-input" for="security-answer">Answer Your Security Question:</label>
-                <input type="text" id="security-answer" name="security_answer" required>
+                <label for="security_answer">Answer Your Security Question:</label>
+                <input type="text" id="security_answer" name="security_answer" required>
             </div>
             <div class="form-input">
                 <label class="required-input" for="password">Password:</label>
@@ -59,12 +59,13 @@
             </div>
             <button class="register-button" type="submit">Register</button>
             <div style="margin-top: 20px; text-align: center;">
-                <p>Already have an account? <a href="register.html">Login</a></p>
+                <p>Already have an account? <a id="login-link" href="login.html">Login</a></p>
+
             </div>
         </form>
     </div>
-    <script src="./src/register.js"></script>
-    <script src = "./src/url_redirection.js"></script>
+    <script src="../src/register.js"></script>
+    <script src = "../src/url_redirection.js"></script>
 
 </body>
 </html>

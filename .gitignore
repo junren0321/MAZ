@@ -1,0 +1,15 @@
+# Ignore node_modules directory in the server folder
+server/node_modules/
+
+# Ignore all files in server/uploads
+server/uploads/*
+
+# Do not ignore .gitkeep file in server/uploads
+!server/uploads/.gitkeep
+
+
+server.crt
+server.key
+
+localhost.pem
+localhost-key.pem
