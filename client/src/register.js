@@ -48,9 +48,15 @@ registerForm.addEventListener('submit', async (event) => {
         }
       });
       if (response.ok) {
+<<<<<<< HEAD
         // alert('You have successfully registered!');
         // console.log('User registered successfully');
         window.location.href = './login.html'
+=======
+        window.location.href = './login.html';
+        alert('You have successfully registered!');
+        console.log('User registered successfully');
+>>>>>>> 2216c6e (huge updates)
       } else {
         const data = await response.json();
         if (data.error === 'duplicate_email') {

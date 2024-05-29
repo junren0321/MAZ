@@ -54,11 +54,19 @@ const OptionKind = {
 };
 
 let BookUrl;
+<<<<<<< HEAD
 BookUrl = localStorage.getItem('pdfUrl'); // haha
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('goBack').addEventListener('click', function() {
       window.location.href = '../../explore_book.html'; // haha
+=======
+BookUrl = localStorage.getItem('bookurl'); // haha
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('goBack').addEventListener('click', function() {
+      window.location.href = '../index.html'; // haha
+>>>>>>> 2216c6e (huge updates)
   });
 });
 

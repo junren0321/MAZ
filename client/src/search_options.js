@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             tags.push(tagValue);
             tagsInput.value = tags.join(', ');
 
+<<<<<<< HEAD
             tagsContainer.innerHTML = '';document.addEventListener("DOMContentLoaded", function() {
                 const tagsButtons = document.querySelectorAll('.theme-button');
                 const tagsInput = document.getElementById('tags');  // 改變 id 從 'theme' 到 'tags'
@@ -129,6 +130,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 searchButton.addEventListener('click', searchBooks);
             });
             
+=======
+            tagsContainer.innerHTML = '';
+>>>>>>> 2216c6e (huge updates)
 
             tags.forEach(tag => {
                 const tagElement = document.createElement('div');
@@ -234,3 +238,9 @@ document.addEventListener("DOMContentLoaded", function() {
         searchButton.click();
     }
 });
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 2216c6e (huge updates)
