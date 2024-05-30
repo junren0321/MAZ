@@ -1,5 +1,5 @@
 # Ignore node_modules directory in the server folder
-server/node_modules/
+server/node_modules/    
 server/.env
 # Ignore all files in server/uploads
 server/uploads/*

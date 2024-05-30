@@ -56,8 +56,4 @@ function viewBook(bookId) {
         console.log('Book details stored in localStorage:', book);  // 調試日誌
         window.location.href = 'explore_book.html';
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2216c6e (huge updates)

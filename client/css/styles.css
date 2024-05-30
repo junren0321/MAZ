@@ -41,12 +41,8 @@ header nav{
 
 header nav div:not(.dropdown-menu div):not(.dropdown-menu){
   color: #000000;
-<<<<<<< HEAD
   /* font-size: 1.1em; */
   font-size: 18px;
-=======
-  font-size: 1.1em;
->>>>>>> 2216c6e (huge updates)
   font-weight: 500;
   text-decoration: none;
   margin-left: 20px;
@@ -72,21 +68,14 @@ header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
   right: 1%;
   color: #333;
   text-align: center;
-<<<<<<< HEAD
   font-size: 18px;
-=======
->>>>>>> 2216c6e (huge updates)
 }
 
 .profile-icon:hover .dropdown-menu {
   display: block;
 }
 
-<<<<<<< HEAD
 .dropdown-menu div:not(#guest):not(#username) {
-=======
-.dropdown-menu div:not(#guest) {
->>>>>>> 2216c6e (huge updates)
   display: block;
   /* transition: 0.15s; */
   margin-bottom: 5px;
@@ -94,11 +83,7 @@ header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
   /* padding: 8px 12px; */
 }
 
-<<<<<<< HEAD
 .dropdown-menu div:not(#guest):not(#username):hover {
-=======
-.dropdown-menu div:not(#guest):hover {
->>>>>>> 2216c6e (huge updates)
   /* text-decoration: underline; */
   font-weight: bold;
   /* background-color: #f5f5f5; */
@@ -220,7 +205,6 @@ a:hover {
   width: 100%;
   height: 100%;
   transition: transform 0.8s;
-<<<<<<< HEAD
 }
 
 /* 
@@ -528,6 +512,4 @@ a:hover {
   opacity: 0.6;
   pointer-events: auto;
   transition: 1s;
-=======
->>>>>>> 2216c6e (huge updates)
 }

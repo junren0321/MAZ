@@ -19,12 +19,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Import and use API routes
 const apiRoutes = require('./routes/apiRoutes');
 app.use('/api', apiRoutes);
-<<<<<<< HEAD
 
 module.exports = app;
-=======
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
->>>>>>> e30fde2 (prototype)
 
-module.exports = app;
 
