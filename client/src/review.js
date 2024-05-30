@@ -1,5 +1,5 @@
 localStorage.setItem('currentUser', 'abc');
-localStorage.setItem('currentBookId', bookId);
+localStorage.setItem('currentBookId', '1');
 
 async function submitReview() {
     

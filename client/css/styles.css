@@ -73,7 +73,7 @@ header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
   display: block;
 }
 
-.dropdown-menu div:not(#guest) {
+.dropdown-menu div:not(#guest):not(#username) {
   display: block;
   /* transition: 0.15s; */
   margin-bottom: 5px;
@@ -81,12 +81,31 @@ header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
   /* padding: 8px 12px; */
 }
 
-.dropdown-menu div:not(#guest):hover {
+.dropdown-menu div:not(#guest):not(#username):hover {
   /* text-decoration: underline; */
   font-weight: bold;
   /* background-color: #f5f5f5; */
 }
 
+.magic-button {
+  width: 200px;
+  height: 50px;
+  font-size: 1.1em;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  background-color: #7c449b;
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  
+  /* transform: translateY(-50%); */
+}
+
+.magic-button:hover {
+  transform: scale(1.1);
+  /* background: linear-gradient(to bottom, #3c1053, #ad5389); */
+}
 #register-2 {
   width: 200px;
   height: 50px;
@@ -108,7 +127,6 @@ header nav div:not(.dropdown-menu div):not(.dropdown-menu):hover{
   transform: scale(1.1);
   /* background: linear-gradient(to bottom, #3c1053, #ad5389); */
 }
-
 footer {
   box-shadow: 0 -1px 8px rgba(0, 0, 0, 0.2);
   background-color: #7c449b;
@@ -193,4 +211,385 @@ a {
 a:hover {
   border-bottom-color: transparent; /* 悬停时隐藏下划线 */
   /* font-weight: bold; */
+}
+
+#flip-container {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+#flip-card {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+}
+
+/* 
+  search.html css
+*/
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.left-container,
+.right-container {
+  background: white;
+  max-height: 80vh; /* 设置最大高度，这里用80%视口高度作为示例 */
+  overflow-y: auto; /* 启用垂直滚动 */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 48%;
+  box-sizing: border-box;
+}
+
+.left-container {
+  max-height: 80vh; /* 调整左边容器的最大高度以减少滚动 */
+}
+
+.form-group {
+  margin-bottom: 10px; /* 调整表单组的下边距 */
+}
+
+.form-group label {
+  font-size: 1em; /* 调整标签的字体大小 */
+  margin-bottom: 1px; /* 增加标签和输入框之间的间距 */
+}
+
+.form-group input {
+  font-size: 0.9em; /* 调整输入框的字体大小 */
+  padding: 4px; /* 减小输入框的内边距 */
+  width: 100%; /* 确保输入框占满父容器宽度 */
+  box-sizing: border-box; /* 确保内边距不会增加输入框宽度 */
+}
+
+/*theme-button*/
+.theme-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.theme-button {
+  background-color: #ccc;
+  color: #000;
+  font-size: 0.4em;
+  padding: 3px 6px;
+  margin: 2px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-button:hover {
+  background-color: #999;
+}
+
+.theme-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #ccc;
+  color: #000;
+  font-size: 0.4em;
+  padding: 3px 6px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+.theme-tag .remove-tag {
+  margin-left: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.theme-tag .remove-tag:hover {
+  color: red;
+}
+
+.selected-themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-input-container {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  background: white;
+}
+
+.book-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.book-container:hover {
+  transform: scale(1.02); /* 将图片放大到原始大小的 1.1 倍 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+}
+
+/* Specific styling for the search button */
+.search-button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #3c1053;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #ad5389;
+}
+
+/* Container for book cover */
+.cover {
+  flex: 0 0 120px; /* Adjust the width of the cover image container */
+  margin-right: 20px;
+}
+
+.cover img {
+  width: 100%; /* 将图像的宽度设置为原始宽度的 1/5 */
+  height: auto; /* 让高度自动调整以保持纵横比 */
+  border-radius: 4px;
+}
+
+.pdf-cover canvas {
+  width: 100px;  /* 固定宽度 */
+  height: 150px; /* 固定高度 */
+  object-fit: cover; /* 保持图像比例 */
+  border-radius: 4px; /* 使边角圆润 */
+}
+
+/* Container for book information */
+.book-info {
+  flex: 1; /* Take the remaining space */
+}
+
+.book-info h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.book-info p {
+  margin: 4px 20px 4px 15px; /* 调整右边距 */
+  color: #666;
+  font-size: 1.5em; /* 放大字体 */
+}
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 6px;
+}
+
+
+
+
+/* 
+  explore_book.html css
+*/
+.info-container {
+  display: flex;
+  justify-content: center; /* Center the containers */
+  align-items: flex-start;
+  margin-top: 20px;
+  gap: 20px; /* Add gap between containers */
+}
+
+.pic-info {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%; /* Adjust as needed */
+  max-height: 80vh;
+  overflow-y: auto; /* Enable vertical scrolling if necessary */
+}
+
+.book-cover {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px; /* Add space between the cover and the details */
+}
+
+.book-cover img {
+  width: 500px; /* Adjust width as needed */
+  height: auto;
+}
+
+.view-book {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.book-details {
+  flex: 2;
+  text-align: left;
+  line-height: 2;
+  width: 100%;
+}
+
+.book-details h2 {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.book-details p {
+  margin: 10px 0;
+}
+
+.book-details p strong {
+  color: #444;
+}
+.review {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 35%; /* Adjust as needed */
+  max-height: 73vh; /* Set maximum height */
+}
+
+.fixed-section {
+  flex: none;
+  width: 100%;
+}
+.review-section
+{
+  flex: none;
+  width: 100%;
+}
+.scrollable-section {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+}
+
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  background-color: #e9ecef;
+  margin: 5px 0;
+}
+
+li {
+  position: relative;
+}
+
+button.delete-button, button.edit-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #dc3545;
+  padding: 5px;
+  font-size: 12px;
+}
+
+button.edit-button {
+  right: 2%;
+}
+
+button.delete-button {
+  right: 0%;
+}
+
+button.delete-button:hover, button.edit-button:hover {
+  background-color: transparent;
+}
+
+.timestamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.rating-container {
+  display: flex;
+  gap: 10px;
+}
+
+.star {
+  font-size: 25px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.star.selected {
+  color: #f1c40f;
+}
+
+.book-details p strong {
+  color: #444;
 }
