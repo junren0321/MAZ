@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                    (tags.length > 0 && tags.some(t => bookTags.includes(t))) ||
                                    (language !== "" && bookLanguage.includes(language));
                         });
-            
+
                         console.log('Filtered results:', results);
                         // Store the results in localStorage
                         localStorage.setItem('searchResults', JSON.stringify(results));

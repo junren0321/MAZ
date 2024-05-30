@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         bookLanguage.textContent = book.language;
         bookTags.textContent = book.tags.join(', ');
         bookPublisher.textContent = book.publisher;
-        bookPublishDate.textContent = book.publishDate;
+        // format the date
+        const publishDate = new Date(book.publishDate);
+        const formattedPublishDate = `${publishDate.getFullYear()}/${publishDate.getMonth() + 1}/${publishDate.getDate()}`;
+        bookPublishDate.textContent = formattedPublishDate;
+
         bookTranslator.textContent = book.translatedBy;
         bookISBN.textContent = book.isbn;
         bookPageCount.textContent = book.pageCount;
