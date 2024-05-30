@@ -160,21 +160,4 @@ exports.searchBooks = async (req, res) => {
     }
 };
 
-/*
-Query:
-Suppose the frontend requests books with the following search parameters:
-Title: "Advanced Programming"
-ISBN: "123456789"
-Language: "English"
-Tags: "Education,Programming"
-Authors: "Alice,Bob"
-
-SELECT * FROM books
-WHERE
-    name LIKE '%Advanced Programming%' AND
-    isbn = '123456789' AND
-    language = 'English' AND
-    (tags LIKE '%,Education,%' OR tags LIKE '%,Programming,%') AND
-    (authors LIKE '%,Alice,%' OR authors LIKE '%,Bob,%')
-*/
 module.exports.upload = upload;
