@@ -17,7 +17,12 @@ loginForm.addEventListener('submit', async (event) => {
       const data = await response.json();
       localStorage.setItem('jwt', data.token); // Store the JWT in localStorage
       localStorage.setItem('user', JSON.stringify({ username: data.user.username, 
+<<<<<<< HEAD
       email: data.user.email, birthdate: data.user.birthdate }));
+=======
+        email: data.user.email, birthdate: data.user.birthdate }));
+      window.location.href = './userpage.html';
+>>>>>>> 8fff4a3695558171482b1d06786fe6a7f1f91f90
       alert('You have successfully login!');
     } else {
       alert('User does not exist or wrong password!');

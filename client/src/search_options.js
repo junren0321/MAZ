@@ -218,4 +218,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const searchButton = document.querySelector('.search-button');
     searchButton.addEventListener('click', searchBooks);
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
+    const languageParam = urlParams.get('language');
+    
+    if (themeParam) {
+        const themeButton = document.getElementById(themeParam);
+        if (themeButton) {
+            themeButton.click();
+            searchButton.click();
+        }
+    } else if (languageParam) {
+        document.getElementById('language').value = languageParam;
+        searchButton.click();
+    }
 });

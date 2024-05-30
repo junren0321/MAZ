@@ -11,7 +11,7 @@
 .book-cover img {
     width: 600px; /* 调整图片的固定宽度为450像素 */
     height: 600px; /* 高度自适应 */
-    margin-right: 40px; /* 增加右边距以便更好的空间分隔 */
+    margin-right: 40pwerx; /* 增加右边距以便更好的空间分隔 */
 }
 
 .book-details {

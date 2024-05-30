@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAZ - Popular</title>
+    <link rel="icon" type="image/png" href="./img/logo-crop.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet"href="https://www.jqueryscript.net/css/jquerysctipttop.css" type="text/css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <nav>
+            <div id="popular">popular</div>
+            <div id="about">about</div>
+            <div id="contact">contact</div>
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div id="guest">Guest</div>
+                    <div id="username"></div>
+                    <hr style="margin-bottom: 15px;">
+                    <div id="profile">Profile</div>
+                    <div id="logout">Logout</div>
+                    <div id="login">Login</div>
+                    <div id="register-1">Register</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <pre style="font-size: 2em; text-align: center; position: absolute; left: 33%; top: 20%;">
+        Trending PicBook in MAZ
+    </pre>
+    <div class="card-carousel" id="search-results"></div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src = "../src/url_redirection.js"></script>
+    <script src="../src/popular.js"></script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+      
+        (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+      
+    </script>
+</body>
+</html>

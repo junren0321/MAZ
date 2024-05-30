@@ -13,12 +13,16 @@
 <body>
     <header>
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
+                    <div id="username"></div>
                     <hr style="margin-bottom: 15px;">
+                    <div id="profile">Profile</div>
+                    <div id="logout">Logout</div>
                     <div id="login">Login</div>
                     <div id="register-1">Register</div>
                 </div>
@@ -136,10 +140,9 @@
             </div>
         </form>
     </div>
-<<<<<<< HEAD
-    <script src="./src/login.js"></script>
-    <script src = "./src/url_redirection.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="../src/login.js"></script>
+    <script src = "../src/url_redirection.js"></script>
 </body>
 </html>
 =======
