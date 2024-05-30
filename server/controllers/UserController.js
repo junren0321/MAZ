@@ -35,25 +35,14 @@ exports.register = async (req, res) => {
 >>>>>>> e30fde2 (prototype)
 =======
     // console.log('Register function called');
-    const { username, email, birthdate, password, security_question, security_answer } = req.body;
-
-    // console.log('Input values:', { username, email, birthdate, password, security_question, security_answer });
-    // console.log('Input types:', {
-    //     username: typeof username,
-    //     email: typeof email,
-    //     birthdate: typeof birthdate,
-    //     password: typeof password,
-    //     security_question: typeof security_question,
-    //     security_answer: typeof security_answer
-    // });
->>>>>>> 1029564 (Junren (#1))
+    const { username, email, birthdate, password} = req.body;
     
     const hashedPassword = await bcrypt.hash(password, 10);
-    const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer
+    // const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer
     
     try {
-        await db.query('INSERT INTO users (username, email, birthdate, password, security_question, security_answer) VALUES (?, ?, ?, ?, ?, ?)', 
-            [username, email, birthdate, hashedPassword, security_question, hashedSecurityAnswer]); // Use the hashed security answer
+        await db.query('INSERT INTO users (username, email, birthdate, password) VALUES (?, ?, ?, ?)', 
+            [username, email, birthdate, hashedPassword]); // Use the hashed security answer
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error(error);
