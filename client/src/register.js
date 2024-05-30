@@ -41,9 +41,7 @@ registerForm.addEventListener('submit', async (event) => {
           username: formData.get('username'),
           email: formData.get('email'),
           birthdate: formData.get('birthdate'),
-          password: formData.get('password'),
-          security_question: formData.get('security_question'),
-          security_answer: formData.get('security_answer')
+          password: formData.get('password')
         }),
         headers: {
           'Content-Type': 'application/json'
