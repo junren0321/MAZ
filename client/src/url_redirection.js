@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttonActions = [
         { id: 'logo-1', url: './index.html' },
         { id: 'logo-2', url: './userpage.html' },
-        { id: 'announce', url: './announce.html' },
+        // { id: 'announce', url: './announce.html' },
         { id: 'popular', url: './popular.html' },
         { id: 'about', url: './about.html' },
         { id: 'contact', url: './contact.html' },
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 'register-1', url: './register.html' },
         { id: 'register-2', url: './login.html' },
         { id: 'profile', url: './profile.html' },
-        { id: 'setting', url: './setting.html' },
+        // { id: 'setting', url: './setting.html' },
         { id: 'explore', url: './search.html' },
         { id: 'upload', url: './upload.html' }
     ];
@@ -70,7 +70,7 @@ function userislogin() {
 document.addEventListener('DOMContentLoaded', function() {
     const profileOptions = document.querySelectorAll('.dropdown-menu div');
     const profileOption = document.getElementById('profile');
-    const settingOption = document.getElementById('setting');
+    // const settingOption = document.getElementById('setting');
     const logoutOption = document.getElementById('logout');
     const loginOption = document.getElementById('login');
     const registerOption = document.getElementById('register-1');
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         guestOption.style.display = 'none';
     } else {
         profileOption.style.display = 'none';
-        settingOption.style.display = 'none';
+        // settingOption.style.display = 'none';
         logoutOption.style.display = 'none';
         logo2Option.style.display = 'none';
         usernameOption.style.display = 'none';
@@ -101,10 +101,11 @@ document.getElementById('logout').addEventListener('click', function() {
     function logout() {
         localStorage.removeItem('jwt');
         localStorage.removeItem('user');
-        // localStorage.removeItem('searchResults');
-        // localStorage.removeItem('currentBook');
-        // localStorage.removeItem('bookId');
-        // localStorage.removeItem('pdfUrl');
+        localStorage.removeItem('searchResults');
+        localStorage.removeItem('uploadResults');
+        localStorage.removeItem('currentBook');
+        localStorage.removeItem('bookId');
+        localStorage.removeItem('pdfUrl');
         alert('You have successfully logged out!');
         window.location.href = './index.html';
     }

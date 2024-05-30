@@ -54,11 +54,11 @@ const OptionKind = {
 };
 
 let BookUrl;
-BookUrl = localStorage.getItem('bookurl'); // haha
+BookUrl = localStorage.getItem('pdfUrl'); // haha
 
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('goBack').addEventListener('click', function() {
-      window.location.href = '../index.html'; // haha
+      window.location.href = '../../explore_book.html'; // haha
   });
 });
 

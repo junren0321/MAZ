@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const bookISBN = document.getElementById('book-isbn');
         const bookPageCount = document.getElementById('book-count');
         const bookDescription = document.getElementById('book-description');
+        const viewButton = document.getElementById('view-book');
+
+        const formattedDate = book.publishDate.split('T')[0];
 
         bookCover.src = book.url;
         bookName.textContent = book.name;
@@ -24,17 +27,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
         bookLanguage.textContent = book.language;
         bookTags.textContent = book.tags.join(', ');
         bookPublisher.textContent = book.publisher;
-        bookPublishDate.textContent = book.publishDate;
+        // bookPublishDate.textContent = book.publishDate;
+        bookPublishDate.textContent = formattedDate;
         bookTranslator.textContent = book.translatedBy;
         bookISBN.textContent = book.isbn;
         bookPageCount.textContent = book.pageCount;
         bookDescription.textContent = book.remark;
 
-        // 点击封面图片设置 PDF URL 并跳转到 view.html
         bookCover.addEventListener('click', () => {
             localStorage.setItem('pdfUrl', book.url);
-            console.log('PDF URL set in localStorage:', book.url);  // 调试日志
-            window.location.href = 'view.html';
+            console.log('PDF URL set in localStorage:', book.url);
+            window.location.href = './pdfjs/web/viewer.html';
+        });
+        
+        viewButton.addEventListener('click', () => {
+            localStorage.setItem('pdfUrl', book.url);
+            console.log('PDF URL set in localStorage:', book.url);
+            window.location.href = './pdfjs/web/viewer.html';
         });
     } else {
         console.error('No book found with the given ID in localStorage');

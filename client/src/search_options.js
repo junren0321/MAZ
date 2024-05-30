@@ -234,6 +234,3 @@ document.addEventListener("DOMContentLoaded", function() {
         searchButton.click();
     }
 });
-
-
-

@@ -18,7 +18,7 @@ $( document ).ready( function() {
         { label: 'Others', url: './search.html?theme=theme-12', target: '_top', tooltip: 'Theme' },
         { label: 'Chinese', url: './search.html?language=Chinese', target: '_top', tooltip: 'Language' },
         { label: 'English', url: './search.html?language=English', target: '_top', tooltip: 'Language' },
-        // { label: 'Others', url: './search.html?language=Others', target: '_top', tooltip: 'Language' },
+        { label: 'Others', url: './search.html?language=Others', target: '_top', tooltip: 'Language' },
 
     ];
 
