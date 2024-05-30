@@ -11,7 +11,7 @@ const upload = multer({ storage });
 // Book upload
 exports.uploadBook = async (req, res) => {
     // Log that the upload function was called
-    console.log('Upload function called:');
+    // console.log('Upload function called:', req.body);
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded.' });
     }
@@ -25,13 +25,11 @@ exports.uploadBook = async (req, res) => {
     let tags = req.body.tags;
 
     // Check if authors and tags exist and are arrays, otherwise treat them as empty arrays
-    authors = Array.isArray(authors) ? authors : [];
-    tags = Array.isArray(tags) ? tags : [];
-
-    tags = [...new Set(tags)]; // remove duplicates
+    authors = Array.isArray(authors) ? authors : [authors];
+    tags = Array.isArray(tags) ? tags : [tags];
     
-    const authorsStr = authors.length > 0 ? ',' + authors.join(',') + ',' : ',';
-    const tagsStr = tags.length > 0 ? ',' + tags.join(',') + ',' : ',';
+    const authorsStr = authors.length > 0 ? ',' + authors.join(',') + ',' : ',,';
+    const tagsStr = tags.length > 0 ? ',' + tags.join(',') + ',' : ',,';
 
     try {
         await db.query('INSERT INTO books (filename, name, authors, language, tags, publisher, publish_date, translated_by, uploaded_by, page_count, isbn, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
@@ -101,6 +99,7 @@ exports.getUserBooks = async (req, res) => {
 };
 
 exports.searchBooks = async (req, res) => {
+    
     console.log('Query Parameters:', req.query);
 
     const { title, isbn, language, tags, authors } = req.query;
@@ -122,12 +121,14 @@ exports.searchBooks = async (req, res) => {
         params.push(language);
     }
 
+    // Handling tags
     if (tags) {
         const tagsConditions = tags.split(',').map(tag => `tags LIKE ?`).join(' OR ');
         tags.split(',').forEach(tag => params.push(`%,${tag.trim()},%`));
         conditions.push(`(${tagsConditions})`);
     }
 
+    // Handling authors
     if (authors) {
         const authorsConditions = authors.split(',').map(author => `authors LIKE ?`).join(' OR ');
         authors.split(',').forEach(author => params.push(`%,${author.trim()},%`));
@@ -158,24 +159,5 @@ exports.searchBooks = async (req, res) => {
         res.status(500).json({ error: 'Database error during book search.' });
     }
 };
-
-
-/*
-Query:
-Suppose the frontend requests books with the following search parameters:
-Title: "Advanced Programming"
-ISBN: "123456789"
-Language: "English"
-Tags: "Education,Programming"
-Authors: "Alice,Bob"
-
-SELECT * FROM books
-WHERE
-    name LIKE '%Advanced Programming%' AND
-    isbn = '123456789' AND
-    language = 'English' AND
-    (tags LIKE '%,Education,%' OR tags LIKE '%,Programming,%') AND
-    (authors LIKE '%,Alice,%' OR authors LIKE '%,Bob,%')
-*/
 
 module.exports.upload = upload;

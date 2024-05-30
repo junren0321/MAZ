@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+.container {
+    display: flex;
+    justify-content: flex-start; /* 内容靠左对齐 */
+    align-items: flex-start; /* 顶部对齐 */
+    margin: 20px auto; /* 上下有20px边距，左右自动居中 */
+    max-width: 1440px; /* 最大宽度限制 */
+}
+
+.book-cover img {
+    width: 600px; /* 调整图片的固定宽度为450像素 */
+    height: 600px; /* 高度自适应 */
+    margin-right: 40px; /* 增加右边距以便更好的空间分隔 */
+}
+
+.book-details {
+    text-align: left;
+    max-width: 800px;
+    padding: 20px;
+
+    line-height: 2; /* 調整行高 */
+}
+
+.book-details h2 {
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.book-details p {
+    margin: 10px 0; /* 調整每行之間的距離 */
+}
+
+.book-details p strong {
+    color: #444;
+}

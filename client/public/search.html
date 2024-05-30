@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAZ - Search</title>
+    <link rel="icon" type="image/png" href="./favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/search.css">
+</head>
+<body>
+<header>
+    <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+    <nav>
+        <div id="announce">announcement</div>
+        <div id="popular">popular</div>
+        <div id="about">about</div>
+        <div id="contact">contact</div>
+        <div class="profile-icon">
+            <i class="fas fa-user"></i>
+            <div class="dropdown-menu">
+                <div id="guest">Guest</div>
+                <hr style="margin-bottom: 15px;">
+                <div id="login">Login</div>
+                <div id="register-1">Register</div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="left-container">
+        <h1>Book Search</h1>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="name" name="title">
+        </div>
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+        </div>
+        <div class="form-group">
+            <label for="isbn">ISBN:</label>
+            <input type="text" id="isbn" name="isbn">
+        </div>
+        <div class="form-group">
+            <label for="theme">Theme:</label>
+            <div id="theme-input-container" class="theme-input-container">
+                <div id="selected-tags" class="selected-themes"></div>
+                <input type="hidden" id="theme" name="theme">
+            </div>
+            <div class="theme-buttons">
+                <button class="theme-button">Friendship</button>
+                <button class="theme-button">Adventure</button>
+                <button class="theme-button">Character</button>
+                <button class="theme-button">Life Lessons</button>
+                <button class="theme-button">History</button>
+                <button class="theme-button">Imagination</button>
+                <button class="theme-button">Emotions</button>
+                <button class="theme-button">Nature</button>
+                <button class="theme-button">Art</button>
+                <button class="theme-button">Science Fiction</button>
+                <button class="theme-button">Inspirational</button>
+                <button class="theme-button">Others</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="language">Language:</label>
+            <input type="text" id="language" name="language">
+        </div>
+        <button class="search-button">Search</button>
+    </div>
+    <div class="right-container" id="search-results">
+    </div>
+</div>
+<footer>
+    <img src="./img/logo-reverse.png" style="width:15%; margin-top: 5px;">
+    <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
+    <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+<script src = "../src/url_redirection.js"></script>
+<script src="../src/search_options.js"></script>
+<script src="../src/searchs.js"></script>
+</body>
+</html>

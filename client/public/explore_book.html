@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAZ - Book Viewer</title>
+    <link rel="icon" type="image/png" href="./img/logo-crop.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/explore_book.css">
+</head>
+<body>
+    <header>
+        <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <nav>
+            <div id="announce">announcement</div>
+            <div id="popular">popular</div>
+            <div id="about">about</div>
+            <div id="contact">contact</div>
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+                <div class="dropdown-menu">
+                    <div id="guest">Guest</div>
+                    <hr style="margin-bottom: 15px;">
+                    <div id="profile">Profile</div>
+                    <div id="setting">Setting</div>
+                    <div id="logout">Logout</div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="book-cover">
+                <img src="" alt="Book Cover" id="book-cover">
+            </div>
+            <div class="book-details">
+                <div class="book-info">
+                    <p><strong>Title:</strong> <span id="book-title"></span></p>
+                    <p><strong>Author:</strong> <span id="book-authors"></span></p>
+                    <p><strong>Language:</strong> <span id="book-language"></span></p>
+                    <p><strong>Tags:</strong> <span id="book-tags"></span></p>
+                    <p><strong>Publisher:</strong> <span id="book-publisher"></span></p>
+                    <p><strong>Publish Date:</strong> <span id="book-publish-date"></span></p>
+                    <p><strong>Translator:</strong> <span id="book-translator"></span></p>
+                    <p><strong>ISBN:</strong> <span id="book-isbn"></span></p>
+                    <p><strong>Page Count:</strong> <span id="book-count"></span></p>
+                    <p><strong>Description:</strong> <span id="book-description"></span></p>
+                    <a href="view.html" class="view-book">View Book</a>
+                    <!-- <a href="review.html" class="view-book">Review</a> -->
+                    <div class="reviews-section">
+                        <h2>Reviews</h2>
+                        <span class="timestamp"></span>
+                        <ul id="reviewsList"></ul>
+                    </div>
+                    <div class="review-section">
+                        <textarea id="reviewInput" placeholder="Write your review here"></textarea>
+                        <button onclick="submitReview()">Submit Review</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div style="margin-bottom: 100%;"></div> 
+    <footer>
+        <img src="./img/logo-reverse.png" style="width:15%; margin-top: 5px;">
+        <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
+        <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src = "../src/url_redirection.js"></script>
+    <script src="../src/review.js"></script>
+    <script src = "../src/b.js"></script>
+</body>
+</html>
