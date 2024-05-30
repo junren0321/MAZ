@@ -6,14 +6,14 @@ const db = require('../config/database');
 exports.register = async (req, res) => {
     console.log('Register Parameters:', req.query);
     // console.log('Register function called');
-    const { username, email, birthdate, password, security_question, security_answer } = req.body;
+    const { username, email, birthdate, password} = req.body;
     
     const hashedPassword = await bcrypt.hash(password, 10);
-    const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer
+    // const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer
     
     try {
-        await db.query('INSERT INTO users (username, email, birthdate, password, security_question, security_answer) VALUES (?, ?, ?, ?, ?, ?)', 
-            [username, email, birthdate, hashedPassword, security_question, hashedSecurityAnswer]); // Use the hashed security answer
+        await db.query('INSERT INTO users (username, email, birthdate, password) VALUES (?, ?, ?, ?)', 
+            [username, email, birthdate, hashedPassword]); // Use the hashed security answer
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error(error);
