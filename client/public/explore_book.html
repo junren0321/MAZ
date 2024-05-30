@@ -12,6 +12,7 @@
 <body>
     <header>
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div id="announce">announcement</div>
             <div id="popular">popular</div>
@@ -19,20 +20,24 @@
             <div id="contact">contact</div>
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
+                    <div id="username"></div>
                     <hr style="margin-bottom: 15px;">
                     <div id="profile">Profile</div>
                     <div id="setting">Setting</div>
                     <div id="logout">Logout</div>
+                    <div id="login">Login</div>
+                    <div id="register-1">Register</div>
                 </div>
             </div>
         </nav>
     </header>
     <main>
-        <div class="container">
+        <div class="info-container">
             <div class="book-cover">
-                <img src="" alt="Book Cover" id="book-cover">
+                <canvas id="pdf-render" ></canvas>
+                <img src="" alt="Book Cover" id="book-cover" style="cursor:pointer;">
             </div>
             <div class="book-details">
                 <div class="book-info">

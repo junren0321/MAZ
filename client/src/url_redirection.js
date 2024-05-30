@@ -131,13 +131,7 @@ document.getElementById('logout').addEventListener('click', function() {
         localStorage.removeItem('currentBook');
         localStorage.removeItem('bookId');
         localStorage.removeItem('pdfUrl');
-=======
-        // localStorage.removeItem('searchResults');
-        // localStorage.removeItem('currentBook');
-        // localStorage.removeItem('bookId');
-        // localStorage.removeItem('pdfUrl');
->>>>>>> 2216c6e (huge updates)
-        alert('You have successfully logged out!');
+        // alert('You have successfully logged out!');
         window.location.href = './index.html';
     }
 
