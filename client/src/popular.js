@@ -91,17 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-function viewBook(bookId) {
-    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
-    const book = searchResults.find(book => book.id === bookId);
-    if (book) {
-        localStorage.setItem('currentBook', JSON.stringify(book));
-        localStorage.setItem('bookId', bookId);
-        console.log('Book details stored in localStorage:', book);
-        window.location.href = 'explore_book.html';
-    }
-}
-
 async function fetchBooks() {
     try {
         const response = await fetch(`/api/books`, {
@@ -127,12 +116,17 @@ async function fetchBooks() {
 }
 
 function viewBook(bookId) {
+    if (!userislogin()){
+        alert("Please login first!");
+        window.location.href = 'login.html';
+        return;
+    }
     const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
     const book = searchResults.find(book => book.id === bookId);
     if (book) {
         localStorage.setItem('currentBook', JSON.stringify(book));
-        localStorage.setItem('bookId', bookId);  // 將 bookId 存儲到 localStorage
-        console.log('Book details stored in localStorage:', book);  // 調試日誌
+        localStorage.setItem('bookId', bookId);
+        console.log('Book details stored in localStorage:', book);
         window.location.href = 'explore_book.html';
     }
 }
