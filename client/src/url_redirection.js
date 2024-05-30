@@ -106,7 +106,7 @@ document.getElementById('logout').addEventListener('click', function() {
         localStorage.removeItem('currentBook');
         localStorage.removeItem('bookId');
         localStorage.removeItem('pdfUrl');
-        alert('You have successfully logged out!');
+        // alert('You have successfully logged out!');
         window.location.href = './index.html';
     }
 

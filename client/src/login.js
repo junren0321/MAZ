@@ -19,7 +19,7 @@ loginForm.addEventListener('submit', async (event) => {
       localStorage.setItem('user', JSON.stringify({ username: data.user.username, 
         email: data.user.email, birthdate: data.user.birthdate }));
       window.location.href = './userpage.html';
-      alert('You have successfully login!');
+      // alert('You have successfully login!');
     } else {
       alert('User does not exist or wrong password!');
       console.error('Login failed:', response.statusText);
