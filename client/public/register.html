@@ -12,6 +12,7 @@
 <body>
     <header>
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div id="announce">announcement</div>
             <div id="popular">popular</div>
@@ -19,19 +20,25 @@
             <div id="contact">contact</div>
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
+                    <div id="username"></div>
                     <hr style="margin-bottom: 15px;">
+<<<<<<< HEAD
                     <!-- <div id="profile">Profile</div>
                     <div id="setting">Setting</div>
                     <div id="logout">Logout</div> -->
+=======
+                    <div id="profile">Profile</div>
+                    <div id="logout">Logout</div>
+>>>>>>> 8fff4a3695558171482b1d06786fe6a7f1f91f90
                     <div id="login">Login</div>
                     <div id="register-1">Register</div>
                 </div>
             </div>
         </nav>
     </header>
-    <img src="./img/login.png" style="width: 35%; position: fixed; top: 15%; left: 12%;">
+    <img src="./img/register.png" style="width: 35%; position: fixed; top: 15%; left: 12%;">
     <div class="register-container" style="position: absolute; top: 15%; right: 20%; ">
         <div style="font-size: 1.5em; text-align: center; margin-bottom: 5px;">Register</div>
         <form id="registerform">
@@ -48,14 +55,6 @@
                 <input type="date" id="birthdate" name="birthdate" max="9999-12-31" required>
             </div>
             <div class="form-input">
-                <label for="security_question">Design Your Security Question:</label>
-                <input type="text" id="security_question" name="security_question" required>
-            </div>
-            <div class="form-input">
-                <label for="security_answer">Answer Your Security Question:</label>
-                <input type="text" id="security_answer" name="security_answer" required>
-            </div>
-            <div class="form-input">
                 <label class="required-input" for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <div id="passwordError" class="error-message"></div>
@@ -68,12 +67,11 @@
             <button class="register-button" type="submit">Register</button>
             <div style="margin-top: 20px; text-align: center;">
                 <p>Already have an account? <a id="login-link" href="login.html">Login</a></p>
-
             </div>
-        </form>
+        </form>    
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script src="../src/register.js"></script>
     <script src = "../src/url_redirection.js"></script>
-
 </body>
 </html>

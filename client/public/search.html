@@ -3,32 +3,35 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAZ - Search</title>
-    <link rel="icon" type="image/png" href="./favicon.ico">
+    <title>MAZ - Explore</title>
+    <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/search.css">
+    <!-- <link rel="stylesheet" href="../css/search.css"> -->
 </head>
 <body>
 <header>
     <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+    <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
     <nav>
-        <div id="announce">announcement</div>
         <div id="popular">popular</div>
         <div id="about">about</div>
         <div id="contact">contact</div>
         <div class="profile-icon">
             <i class="fas fa-user"></i>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu" id="dropdownMenu">
                 <div id="guest">Guest</div>
+                <div id="username"></div>
                 <hr style="margin-bottom: 15px;">
+                <div id="profile">Profile</div>
+                <div id="logout">Logout</div>
                 <div id="login">Login</div>
                 <div id="register-1">Register</div>
             </div>
         </div>
     </nav>
 </header>
-<div class="container">
+<div class="search-container">
     <div class="left-container">
         <h1>Book Search</h1>
         <div class="form-group">
@@ -50,18 +53,18 @@
                 <input type="hidden" id="theme" name="theme">
             </div>
             <div class="theme-buttons">
-                <button class="theme-button">Friendship</button>
-                <button class="theme-button">Adventure</button>
-                <button class="theme-button">Character</button>
-                <button class="theme-button">Life Lessons</button>
-                <button class="theme-button">History</button>
-                <button class="theme-button">Imagination</button>
-                <button class="theme-button">Emotions</button>
-                <button class="theme-button">Nature</button>
-                <button class="theme-button">Art</button>
-                <button class="theme-button">Science Fiction</button>
-                <button class="theme-button">Inspirational</button>
-                <button class="theme-button">Others</button>
+                <button class="theme-button" id="theme-1">Friendship</button>
+                <button class="theme-button" id="theme-2">Adventure</button>
+                <button class="theme-button" id="theme-3">Character</button>
+                <button class="theme-button" id="theme-4">Life Lessons</button>
+                <button class="theme-button" id="theme-5">History</button>
+                <button class="theme-button" id="theme-6">Imagination</button>
+                <button class="theme-button" id="theme-7">Emotions</button>
+                <button class="theme-button" id="theme-8">Nature</button>
+                <button class="theme-button" id="theme-9">Art</button>
+                <button class="theme-button" id="theme-10">Science Fiction</button>
+                <button class="theme-button" id="theme-11">Inspirational</button>
+                <button class="theme-button" id="theme-12">Others</button>
             </div>
         </div>
         <div class="form-group">
@@ -78,6 +81,7 @@
     <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
     <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 <script src = "../src/url_redirection.js"></script>
 <script src="../src/search_options.js"></script>
