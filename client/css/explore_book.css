@@ -2,15 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 .container {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
+    justify-content: flex-start; /* 内容靠左对齐 */
+    align-items: flex-start; /* 顶部对齐 */
+    margin: 20px auto; /* 上下有20px边距，左右自动居中 */
+    max-width: 1440px; /* 最大宽度限制 */
 }
 
 .book-cover img {
-    width: auto;
-    height: 50vh; /* 設置圖片高度至少為頁面高度的一半 */
-    margin-right: 20px;
+    width: 600px; /* 调整图片的固定宽度为450像素 */
+    height: 600px; /* 高度自适应 */
+    margin-right: 40px; /* 增加右边距以便更好的空间分隔 */
 }
 
 .book-details {

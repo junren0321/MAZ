@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         bookTranslator.textContent = book.translatedBy;
         bookISBN.textContent = book.isbn;
         bookPageCount.textContent = book.pageCount;
-        bookDescription.textContent = book.remark;
+        bookDescription.textContent = book.description;
 
         // 点击封面图片设置 PDF URL 并跳转到 view.html
         bookCover.addEventListener('click', () => {
