@@ -7,15 +7,12 @@
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-<<<<<<< HEAD
-    <link rel="stylesheet" href="../css/explore_book.css">
-=======
     <!-- <link rel="stylesheet" href="../css/explore_book.css"> -->
->>>>>>> 8fff4a3695558171482b1d06786fe6a7f1f91f90
 </head>
 <body>
     <header>
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
+        <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div id="popular">popular</div>
@@ -24,11 +21,15 @@
             <div class="profile-icon">
                 <i class="fas fa-user"></i>
                 <div class="dropdown-menu" id="dropdownMenu">
+                <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
+                    <div id="username"></div>
                     <div id="username"></div>
                     <hr style="margin-bottom: 15px;">
                     <div id="profile">Profile</div>
                     <div id="logout">Logout</div>
+                    <div id="login">Login</div>
+                    <div id="register-1">Register</div>
                     <div id="login">Login</div>
                     <div id="register-1">Register</div>
                 </div>
@@ -36,6 +37,7 @@
         </nav>
     </header>
     <main>
+        <div class="info-container">
         <div class="info-container">
             <div class="book-cover">
                 <img src="" alt="Book Cover" id="book-cover">
@@ -52,8 +54,7 @@
                     <p><strong>ISBN:</strong> <span id="book-isbn"></span></p>
                     <p><strong>Page Count:</strong> <span id="book-count"></span></p>
                     <p><strong>Description:</strong> <span id="book-description"></span></p>
-<<<<<<< HEAD
-                    <a href="view.html" class="view-book">View Book</a>
+                    <a class="view-book" id="view-book">View This PicBook</a>
                     <!-- <a href="review.html" class="view-book">Review</a> -->
                     <div class="reviews-section">
                         <h2>Reviews</h2>
@@ -64,9 +65,6 @@
                         <textarea id="reviewInput" placeholder="Write your review here"></textarea>
                         <button onclick="submitReview()">Submit Review</button>
                     </div>
-=======
-                    <a class="view-book" id="view-book">View This PicBook</a>
->>>>>>> 8fff4a3695558171482b1d06786fe6a7f1f91f90
                 </div>
             </div>
         </div>
@@ -79,11 +77,8 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-    <script src = "../src/url_redirection.js"></script>
-<<<<<<< HEAD
+    <script src = ".../src/url_redirection.js"></script>
     <script src="../src/review.js"></script>
-=======
->>>>>>> 8fff4a3695558171482b1d06786fe6a7f1f91f90
-    <script src = "../src/b.js"></script>
+    <script src = ".../src/b.js"></script>
 </body>
 </html>
