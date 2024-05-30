@@ -454,7 +454,7 @@ input[type="password"] {
 
 .book-cover img {
   width: 500px; /* Adjust width as needed */
-  height: auto;
+  height: 500px;
 }
 
 .view-book {
@@ -551,7 +551,7 @@ button.delete-button, button.edit-button {
   border: none;
   cursor: pointer;
   color: #dc3545;
-  padding: 5px;
+  padding: 20px;
   font-size: 12px;
 }
 
