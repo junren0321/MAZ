@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        searchResults.forEach(book => {
+        searchResults.forEach((book, index) => {
+            if (index > 7) return;
             const bookElement = document.createElement('div');
             bookElement.className = 'my-card';
 
