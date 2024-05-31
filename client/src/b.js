@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         bookTranslator.textContent = book.translatedBy;
         bookISBN.textContent = book.isbn;
         bookPageCount.textContent = book.pageCount;
-        bookDescription.textContent = book.remark;
+        bookDescription.textContent = book.description;
 
         bookCover.addEventListener('click', () => {
             localStorage.setItem('pdfUrl', book.url);

@@ -11,9 +11,9 @@ CREATE TABLE users (
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     birthdate DATE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    security_question VARCHAR(255) NOT NULL,
-    security_answer VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL
+    -- security_question VARCHAR(255) NOT NULL,
+    -- security_answer VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE books (
