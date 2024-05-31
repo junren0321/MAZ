@@ -14,7 +14,9 @@
         <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
             <div class="profile-icon">
-                <i class="fas fa-user"></i>
+                <div id="profile-pic">
+                    <img id="profile-pic" src="img/profile-default.png" alt="profile-pic">
+                </div>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
                     <div id="username"></div>
@@ -27,7 +29,7 @@
             </div>
         </nav>
     </header>
-    <img src="./img/register.png" style="width: 35%; position: fixed; top: 15%; left: 12%;">
+    <img src="./img/upload.png" style="width: 35%; position: fixed; top: 15%; left: 12%;">
     <div class="upload-container" style="position: absolute; top: 15%; right: 20%;">
         <div style="font-size: 1.5em; text-align: center; margin-bottom: 5px;">Upload PicBook</div>
         <form id="uploadform" action="/api/upload" method="POST" enctype="multipart/form-data">
@@ -43,8 +45,8 @@
                 <label class="required-input" for="author">Author:</label>
                 <div id="addedAuthors"></div>
                 <input type="text" id="author" name="author">
-                <button type="button" onclick="appendAuthor()">Add Author</button>
-                <button type="button" onclick="deleteAuthor()">Delete Author</button>
+                <button type="button" onclick="appendAuthor()" style="margin-top: 5px; font-size: 13px; padding: 0 5px;">Add Author</button>
+                <button type="button" onclick="deleteAuthor()" style="margin-top: 5px; font-size: 13px; padding: 0 5px;">Delete All</button>
             </div>
             <div class="form-input">
                 <label class="required-input" for="language">Language:</label>
@@ -57,7 +59,7 @@
             <div class="form-input">
                 <label id="categories" class="required-input" for="tags">Categories:</label>
                 <div id="selectedcategories"></div>
-                <select id="tags" name="tags">
+                <select id="tags" name="tags" style="margin-top: 5px;">
                     <option value="Friendship">Friendship</option>
                     <option value="Adventure">Adventure</option>
                     <option value="Character">Character</option>
@@ -72,8 +74,8 @@
                     <option value="Others">Others</option>
                 </select>
                 <br>
-                <button type="button" onclick="appendCategory()">Add Category</button>
-                <button type="button" onclick="deleteCategory()">Delete Categories</button>
+                <button type="button" onclick="appendCategory()" style="margin-top: 5px; font-size: 13px; padding: 0 5px;">Add Category</button>
+                <button type="button" onclick="deleteCategory()" style="margin-top: 5px; font-size: 13px; padding: 0 5px;">Delete All</button>
             </div>
             <div class="form-input">
                 <label class="required-input" for="publisher">Publisher:</label>
