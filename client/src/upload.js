@@ -2,6 +2,12 @@
 let authorsarray = [];
 let categories = [];
 
+document.getElementById("author").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        appendAuthor();
+    }
+});
+
 function appendAuthor() {
     const authorInput = document.getElementById("author");
     const authorValue = authorInput.value.trim();
@@ -41,6 +47,7 @@ function displayCategories() {
     const selectedCategoriesElement = document.getElementById("selectedcategories");
     selectedCategoriesElement.textContent = "Selected Categories: " + categories.join(", ");
 }
+
 
 const uploadForm = document.getElementById('uploadform');
 
