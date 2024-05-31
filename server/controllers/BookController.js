@@ -99,7 +99,6 @@ exports.getUserBooks = async (req, res) => {
 };
 
 exports.searchBooks = async (req, res) => {
-    
     console.log('Query Parameters:', req.query);
 
     const { title, isbn, language, tags, authors } = req.query;

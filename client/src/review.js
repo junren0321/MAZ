@@ -40,12 +40,12 @@ async function submitReview() {
         if (response.ok) {
            reviewInput.value = '';
         
-            alert('Review submitted successfully');
+            // alert('Review submitted successfully');
         } 
-        else {
-            alert('Review submission failed');
-        }
-    }catch (error) {
+        // else {
+        //     alert('Review submission failed');
+        // }
+        }catch (error) {
         console.error('Error submitting review:', error);
     }
     fetchReviews(currentbookId);
