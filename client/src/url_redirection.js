@@ -106,7 +106,7 @@ document.getElementById('logout').addEventListener('click', function() {
         localStorage.removeItem('currentBook');
         localStorage.removeItem('bookId');
         localStorage.removeItem('pdfUrl');
-        // alert('You have successfully logged out!');
+        alert('You have successfully logged out!');
         window.location.href = './index.html';
     }
 
@@ -120,7 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (userislogin()) {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.username) {
-        document.getElementById('username').textContent = `${user.username}`;
+            document.getElementById('username').textContent = user.username;
+            
+            // TODO: replace user.profilePicUrl
+            if (user.profilePicUrl) {
+                document.getElementById('profile-pic').querySelector('img').src = user.profilePicUrl;
+                document.getElementById('profile-pic-2').querySelector('img').src = user.profilePicUrl;
+            }
+            // if (true) {
+            //     document.getElementById('profile-pic').querySelector('img').src = "./img/profile-4.png";
+            //     document.getElementById('profile-pic-2').querySelector('img').src = "./img/profile-4.png";
+            // }
         }
     }
 });

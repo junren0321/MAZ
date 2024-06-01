@@ -14,11 +14,13 @@
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
-            <div id="popular">popular</div>
-            <div id="about">about</div>
-            <div id="contact">contact</div>
+            <div class="nav-div" id="popular">popular</div>
+            <div class="nav-div" id="about">about</div>
+            <div class="nav-div" id="contact">contact</div>
             <div class="profile-icon">
-                <i class="fas fa-user"></i>
+                <div id="profile-pic">
+                    <img id="profile-pic" src="img/profile-default.png" alt="profile-pic">
+                </div>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
                     <div id="username"></div>
@@ -31,9 +33,37 @@
             </div>
         </nav>
     </header>
-    
     <div class="profile-container" style="position: absolute; top: 15%; left: 30%;">
         <div style="font-size: 1.5em; text-align: center; margin-bottom: 5px;">Profile</div>
+        <div class="profile-item">
+            <div class="profile-text">
+                <div class="profile-label">Profile Picture</div>
+            </div>
+            <button class="change-button" data-bs-toggle="modal" data-bs-target="#profilepicModal">Change</button>
+            <div class="modal fade" id="profilepicModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Change Profile Picture</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-dialog">
+                                <p style="position: relative;">Current Profile Picture:</p>
+                                <div id="profile-pic-2-container">
+                                <div id="profile-pic-2">
+                                    <img id="profile-pic-2" src="img/profile-default.png" alt="profile-pic">
+                                    <div class="overlay" onclick="uploadPic()"><i class="fas fa-camera"></i> &nbsp;Upload</div>
+                                </div>
+                            </div>
+                                <button class="send-button" type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="height: 0.2px; margin-bottom: 15px;">
         <div class="profile-item">
             <div class="profile-text">
                 <div class="profile-label">Primary Email</div>
@@ -64,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <hr style="margin-bottom: 15px;">
+        <hr style="height: 0.2px; margin-bottom: 15px;">
         <div class="profile-item">
                 <div class="profile-text">
                 <div class="profile-label">Password</div>
@@ -98,7 +128,7 @@
                 </div>
             </div>
         </div>
-        <hr style="margin-bottom: 15px;">
+        <hr style="height: 0.2px; margin-bottom: 15px;">
         <div class="profile-item">
             <div class="profile-text">
                 <div class="profile-label">Username</div>
@@ -129,7 +159,7 @@
                 </div>
             </div>
         </div>
-        <hr style="margin-bottom: 15px;">
+        <hr style="height: 0.2px; margin-bottom: 15px;">
         <div class="profile-item">
             <div class="profile-text">
                 <div class="profile-label">Delete Account</div>
@@ -150,7 +180,7 @@
                                 </div>
                                 <div><strong>Notice:</strong></div>
                                 <div>1. The account cannot be recovered after deletion.</div>
-                                <div>2. Your uploaded PicBooks will not be deleted along with your account.</div>
+                                <div>2. Your uploaded PicBooks will be deleted along with your account.</div>
                                 <button class="send-button" type="submit">Confirm</button>
                             </form>
                         </div>
@@ -158,7 +188,7 @@
                 </div>
             </div>
         </div>
-        <hr style="margin-bottom: 15px;">
+        <hr style="height: 0.2px; margin-bottom: 15px;">
         <div class="profile-item">
             <div class="profile-text">
             <div class="profile-label" style="margin-bottom: 10px;">My Uploads</div>

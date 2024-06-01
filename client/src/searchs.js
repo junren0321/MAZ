@@ -4,38 +4,47 @@ document.addEventListener("DOMContentLoaded", function() {
     const resultsContainer = document.getElementById('search-results');
 
     if (searchResults.length === 0) {
-        resultsContainer.innerHTML = '<p>No matching results found.</p>';
+        resultsContainer.innerHTML = `
+            <div class="search-fail-box">No matching result found.</div>`;
         return;
+    }
+
+    function updateGridLayout(numberOfItems) {
+        const rows = Math.ceil(numberOfItems / 3);
+        resultsContainer.style.gridTemplateColumns = 'repeat(3, 1fr)';
+        resultsContainer.style.gridTemplateRows = `repeat(${rows}, auto)`;
     }
 
     searchResults.forEach(book => {
         const bookElement = document.createElement('div');
-        bookElement.className = 'book-result';
-
-        // 確保 book.authors 是一個數組並處理未定義的情況
-        const bookAuthors = Array.isArray(book.author) ? book.author.join(', ') : 'Unknown Author';
-        const bookTags = Array.isArray(book.tags) ? book.tags.slice(0, 3).join(', ') : 'No Tags';
+        bookElement.className = 'search-box';
 
         bookElement.innerHTML = `
-            <div id="pdf-cover-${book.id}" class="pdf-cover" onclick="viewBook(${book.id})"></div>
-            <p>Title: ${book.name}</p>
-            <p>Author: ${book.authors}</p>
-            <p>Language: ${book.language}</p>
-            <p>Tags: ${bookTags}</p>
-        `;
+        <div id="pdf-cover-${book.id}" class="pdf-cover" onclick="viewBook(${book.id})"></div>
+        <div style="font-size: 15px; font-weight: 500;">${book.name}</div>`
+        + book.authors.map(author => `<span class="search-author-box">${author}</span>`).join(" ")
+        + book.tags.map(tag => `<span class="search-theme-box">${tag}</span>`).join(" ")
+        + `<span class="search-language-box">${book.language}</span>`;
+    
         resultsContainer.appendChild(bookElement);
 
-        // 使用 PDF.js 加載 PDF 並提取封面
         const loadingTask = pdfjsLib.getDocument(book.url);
         loadingTask.promise.then(pdf => {
             pdf.getPage(1).then(page => {
-                const scale = 1.5;
+                const scale = 0.3;
                 const viewport = page.getViewport({ scale: scale });
 
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
+
+                if (canvas.width > 180) {
+                    canvas.width = 180;
+                }
+                if (canvas.height > 240) {
+                    canvas.height = 240;
+                }
 
                 page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
                     document.getElementById(`pdf-cover-${book.id}`).appendChild(canvas);
@@ -45,13 +54,15 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error('Error loading PDF:', error);
         });
     });
+    updateGridLayout(searchResults.length);
+
 });
 
 function viewBook(bookId) {
     const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
     const book = searchResults.find(book => book.id === bookId);
     if (book) {
-        localStorage.setItem('currentBook', JSON.stringify(book));
+        localStorage.setItem('currentBook', JSON.stringify(book)); //debug
         localStorage.setItem('bookId', bookId);  // 將 bookId 存儲到 localStorage
         console.log('Book details stored in localStorage:', book);  // 調試日誌
         window.location.href = 'explore_book.html';
