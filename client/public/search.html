@@ -7,18 +7,19 @@
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <!-- <link rel="stylesheet" href="../css/search.css"> -->
 </head>
 <body>
 <header>
     <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
     <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
     <nav>
-        <div id="popular">popular</div>
-        <div id="about">about</div>
-        <div id="contact">contact</div>
+        <div class="nav-div" id="popular">popular</div>
+        <div class="nav-div" id="about">about</div>
+        <div class="nav-div" id="contact">contact</div>
         <div class="profile-icon">
-            <i class="fas fa-user"></i>
+            <div id="profile-pic">
+                <img id="profile-pic" src="img/profile-default.png" alt="profile-pic">
+            </div>
             <div class="dropdown-menu" id="dropdownMenu">
                 <div id="guest">Guest</div>
                 <div id="username"></div>
@@ -33,7 +34,7 @@
 </header>
 <div class="search-container">
     <div class="left-container">
-        <h1>Book Search</h1>
+        <h1>Explore PicBook</h1>
         <div class="form-group">
             <label for="title">Title:</label>
             <input type="text" id="name" name="title">
@@ -73,14 +74,13 @@
         </div>
         <button class="search-button">Search</button>
     </div>
-    <div class="right-container" id="search-results">
-    </div>
+    <div class="right-container content-grid" id="search-results"></div>
 </div>
-<footer>
+<!-- <footer>
     <img src="./img/logo-reverse.png" style="width:15%; margin-top: 5px;">
     <p style="margin-bottom:5px;">Our Team &#64; 張迪善 · 黃浩宸 · 何彥禛 · 姚權維 · 潘俊仁 · 李松桓</p>
     <p style="margin-bottom:5px;">Copyright &#169; 2024 NTU IM5068 WEBAPP-GroupD</p>
-</footer>
+</footer> -->
 <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 <script src = "../src/url_redirection.js"></script>

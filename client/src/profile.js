@@ -30,18 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         searchResults.forEach(book => {
             const bookElement = document.createElement('div');
-            bookElement.className = 'book-result box';
+            bookElement.className = 'profile-box';
 
-            const bookAuthors = Array.isArray(book.author) ? book.author.join(', ') : 'Unknown Author';
-            const bookTags = Array.isArray(book.tags) ? book.tags.slice(0, 3).join(', ') : 'No Tags';
+            // TODO: if delete feature not needed anymore, remove delete button here
 
             bookElement.innerHTML = `
+                <div onclick="deleteBook(${book.id})"><img src="./img/delete.png" class="delete-upload"/></div>
                 <div id="pdf-cover-${book.id}" class="pdf-cover" onclick="viewBook(${book.id})"></div>
-                <div style="font-size: 15px;">Title: ${book.name}</div>
-                <div style="font-size: 15px;">Author: ${book.authors}</div>
-                <!-- <div style="font-size: 15px;">Language: ${book.language}</div> -->
-                <!-- <div style="font-size: 15px;">Tags: ${bookTags}</div> -->
-            `;
+                <div style="font-size: 15px; font-weight: 500;">${book.name}</div>`
+                + book.authors.map(author => `<span class="profile-author-box">${author}</span>`).join(" ");
+            
             resultsContainer.appendChild(bookElement);
 
             const loadingTask = pdfjsLib.getDocument(book.url);
@@ -54,6 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const context = canvas.getContext('2d');
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
+
+                    if (canvas.width > 180) {
+                        canvas.width = 180;
+                    }
+                    if (canvas.height > 240) {
+                        canvas.height = 240;
+                    }
 
                     page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
                         document.getElementById(`pdf-cover-${book.id}`).appendChild(canvas);
@@ -76,6 +81,26 @@ function viewBook(bookId) {
         console.log('Book details stored in localStorage:', book);
         window.location.href = 'explore_book.html';
     }
+}
+
+function deleteBook(bookId) {
+    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
+    const book = searchResults.find(book => book.id === bookId);
+    if (book) {
+        // localStorage.setItem('currentBook', JSON.stringify(book));
+        // localStorage.setItem('bookId', bookId);
+        // console.log('Book details stored in localStorage:', book);
+
+        // TODO: perform delete feature book here
+        alert(`${book.name} has been successfully deleted`);
+        window.location.reload();
+    }
+}
+
+function uploadPic() {
+    // TODO: perform upload profile pic feature here
+    alert("Profile Picture has been successfully uploaded!");
+    window.location.reload();
 }
 
 async function fetchBooks() {

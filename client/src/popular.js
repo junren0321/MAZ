@@ -7,25 +7,21 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Loaded from localStorage:', searchResults);  // 調試日誌
 
         if (searchResults.length === 0) {
-            resultsContainer.innerHTML = '<p>You haven\'t searched any picture books yet.</p>';
+            resultsContainer.innerHTML = '<p>Surprise. Nothing is shown here.</p>';
             return;
         }
 
         searchResults.forEach((book, index) => {
+            // if (index <3) return;
             if (index > 7) return;
             const bookElement = document.createElement('div');
             bookElement.className = 'my-card';
 
-            const bookAuthors = Array.isArray(book.author) ? book.author.join(', ') : 'Unknown Author';
-            const bookTags = Array.isArray(book.tags) ? book.tags.slice(0, 3).join(', ') : 'No Tags';
-
             bookElement.innerHTML = `
                 <div id="pdf-cover-${book.id}" class="pdf-cover" onclick="viewBook(${book.id})"></div>
-                <div style="font-size: 15px;">Title: ${book.name}</div>
-                <div style="font-size: 15px;">Author: ${book.authors}</div>
-                <!-- <div style="font-size: 15px;">Language: ${book.language}</div> -->
-                <!-- <div style="font-size: 15px;">Tags: ${bookTags}</div> -->
-            `;
+                <div style="font-size: 15px; font-weight: 500;">${book.name}</div>`
+                + book.authors.map(author => `<span class="author-box">${author}</span>`).join(" ");
+            
             resultsContainer.appendChild(bookElement);
 
             const loadingTask = pdfjsLib.getDocument(book.url);
@@ -36,8 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     const canvas = document.createElement('canvas');
                     const context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
                     canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    
+                    if (canvas.width > 180) {
+                        canvas.width = 180;
+                    }
+                    if (canvas.height > 240) {
+                        canvas.height = 240;
+                    }
 
                     page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
                         document.getElementById(`pdf-cover-${book.id}`).appendChild(canvas);

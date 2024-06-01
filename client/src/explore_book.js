@@ -1,86 +1,79 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener("DOMContentLoaded", function() {
     const bookId = localStorage.getItem('bookId');
     console.log('Loaded bookId from localStorage:', bookId);  // 调试日志
     const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
     const book = searchResults.find(book => book.id == bookId);
-
+    
     if (book) {
         console.log('Book found with bookId:', book);  // 调试日志
         
-        const bookCover = document.getElementById('book-cover');
-        const bookName = document.getElementById('book-title');
-        const bookAuthors = document.getElementById('book-authors');
-        const bookLanguage = document.getElementById('book-language');
-        const bookTags = document.getElementById('book-tags');
-        const bookPublisher = document.getElementById('book-publisher');
-        const bookPublishDate = document.getElementById('book-publish-date');
-        const bookTranslator = document.getElementById('book-translator');
-        const bookISBN = document.getElementById('book-isbn');
-        const bookPageCount = document.getElementById('book-count');
-        const bookDescription = document.getElementById('book-description');
-        const viewButton = document.getElementById('view-book');
+        /* left-info-container */
+        const resultsContainer = document.getElementById('info-results');
+        const bookElement = document.createElement('div');
+        bookElement.className = 'info-box';
+        bookElement.innerHTML = 
+        `<div style="font-size: 20px; font-weight: 600; text-align: center;">${book.name}</div>` +
+        `<div style="text-align: center; margin: 10px 0;" id="pdf-cover-${book.id}" onclick="viewerBook(${book.id})"></div>` +
+        `<p><strong>Author:</strong> ${book.authors.map(author => `<span class="info-author-box">${author}</span>`).join(" ")}</p>` +
+        `<p><strong>Theme:</strong> ${book.tags.map(tag => `<span class="info-theme-box">${tag}</span>`).join(" ")}</p>` +
+        `<p><strong>Language:</strong><span class="info-language-box">${book.language}</span></p>` +
+        `<p><strong>Translator:</strong><span class="info-other-box">${book.translatedBy}</span></p>` +
+        `<p><strong>Publisher:</strong><span class="info-other-box">${book.publisher}</span></p>` +
+        `<p><strong>Publisher Date:</strong><span class="info-other-box">${book.publishDate.split('T')[0]}</span></p>` +
+        `<p><strong>ISBN:</strong><span class="info-other-box">${book.isbn}</span></p>` +
+        `<p><strong>Page Count:</strong><span class="info-other-box">${book.pageCount}</span></p>` +
+        `<br><a class="debug-link" onclick="viewerBook(${book.id})">View This PicBook</a>`;
 
-        const formattedDate = book.publishDate.split('T')[0];
-        console.log(book.url);
-        // bookCover.src = book.url;
-        // console.log(bookCover); 
-        bookName.textContent = book.name;
-        bookAuthors.textContent = book.authors.join(', ');
-        bookLanguage.textContent = book.language;
-        bookTags.textContent = book.tags.join(', ');
-        bookPublisher.textContent = book.publisher;
-        // bookPublishDate.textContent = book.publishDate;
-        bookPublishDate.textContent = formattedDate;
-        bookTranslator.textContent = book.translatedBy;
-        bookISBN.textContent = book.isbn;
-        bookPageCount.textContent = book.pageCount;
-        bookDescription.textContent = book.description;
-        
-        viewButton.addEventListener('click', () => {
-            localStorage.setItem('pdfUrl', book.url);
-            console.log('PDF URL set in localStorage:', book.url);
-            window.location.href = './pdfjs/web/viewer.html';
+
+        resultsContainer.appendChild(bookElement);
+
+        const loadingTask = pdfjsLib.getDocument(book.url);
+        loadingTask.promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                const scale = 0.3;
+                const viewport = page.getViewport({ scale: scale });
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                if (canvas.width > 230) {
+                    canvas.width = 230;
+                }
+                if (canvas.height > 280) {
+                    canvas.height = 280;
+                }
+
+                page.render({ canvasContext: context, viewport: viewport }).promise.then(() => {
+                    document.getElementById(`pdf-cover-${book.id}`).appendChild(canvas);
+                });
+            });
+        }).catch(error => {
+            console.error('Error loading PDF:', error);
         });
+
+        /* right-info-container */
+        const results2Container = document.getElementById('info-results-2');
+        const descriptionElement = document.createElement('div');
+        descriptionElement.className = 'info-box';
+        descriptionElement.style = 'width: 480px;';
+        descriptionElement.innerHTML = 
+        `<div style="font-size: 20px; font-weight: 600; text-align: center; margin-bottom: 10px;">Description</div>`
+        + `<div style="width: 100%; white-space: pre-line; text-align: justify;">${book.description}</div>`;
+
+        results2Container.appendChild(descriptionElement);
     } else {
-        console.error('No book found with the given ID in localStorage');
+    console.error('No book found with the given ID in localStorage');
     }
-
-    const pdfUrl = book.url; // URL to your PDF
-    const pdfjsLib = window['pdfjs-dist/build/pdf'];
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
-
-    // Asynchronous function to load and render PDF
-    async function renderPdfToImg(pdfUrl) {
-      const loadingTask = pdfjsLib.getDocument(pdfUrl);
-
-      try {
-        const pdf = await loadingTask.promise;
-        const pageNum = 1; // Assuming you want to render the first page
-        const page = await pdf.getPage(pageNum);
-
-        const viewport = page.getViewport({ scale: 1 });
-        const canvas = document.getElementById('pdf-render');
-        const context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport
-        };
-        await page.render(renderContext);
-
-        // Convert canvas to image
-        const imgData = canvas.toDataURL('image/png');
-        const bookCover = document.getElementById('book-cover');
-        bookCover.src = imgData;
-        // console.log(imgData);
-      } catch (error) {
-        console.error('Error occurred while rendering PDF:', error);
-      }
-    }
-
-    // Call the function to render PDF as image
-    renderPdfToImg(pdfUrl);
-
 });
+
+function viewerBook(bookId) {
+    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
+    const book = searchResults.find(book => book.id === bookId);
+    if (book) {
+        localStorage.setItem('pdfUrl', book.url);
+        console.log('PDF URL set in localStorage:', book.url);
+        window.location.href = './pdfjs/web/viewer.html';
+    }
+}

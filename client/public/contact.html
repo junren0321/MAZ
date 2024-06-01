@@ -6,6 +6,7 @@
     <title>MAZ - Contact Us</title>
     <link rel="icon" type="image/png" href="./img/logo-crop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
@@ -13,11 +14,13 @@
         <div id="logo-1"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <div id="logo-2"><img src="./img/logo.png" style="width:8em; margin-top: 5px;"></div>
         <nav>
-            <div id="popular">popular</div>
-            <div id="about">about</div>
-            <div id="contact">contact</div>
+            <div class="nav-div" id="popular">popular</div>
+            <div class="nav-div" id="about">about</div>
+            <div class="nav-div" id="contact">contact</div>
             <div class="profile-icon">
-                <i class="fas fa-user"></i>
+                <div id="profile-pic">
+                    <img id="profile-pic" src="img/profile-default.png" alt="profile-pic">
+                </div>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
                     <div id="username"></div>
@@ -30,11 +33,143 @@
             </div>
         </nav>
     </header>
-    
-    
-    <div style="margin-bottom: 100%;"></div>
+    <div class="slide-container swiper">
+        <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Project Manager</div>
+                        <div class="card-image">
+                            <img src="img/profile-1.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">張迪善</h2>
+                        <p class="contact-description">Allocates tasks, manages project progress, tests project execution, evaluates functional implementation requirements, and handles personnel communication.</p>
+                    </div>
+                </div>
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Quality Assurance</div>
+                        <div class="card-image">
+                            <img src="img/profile-2.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">潘俊仁</h2>
+                        <p class="contact-description">Manages documentation, ensures smooth user experiences, tests, evaluates, and adjusts website functionalities, and identifies process errors.</p>
+                    </div>
+                </div>
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Backend Developer</div>
+                        <div class="card-image">
+                            <img src="img/profile-3.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">李松桓</h2>
+                        <p class="contact-description">Engages in software development and programming, tests software functionality and performance to ensure quality, and performs debugging.</p>
+                    </div>
+                </div>
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Project Assistant</div>
+                        <div class="card-image">
+                            <img src="img/profile-4.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">姚權維</h2>
+                        <p class="contact-description">Supports the Project Manager in discussing project features, website requirements, the implementation process, and the distribution of frontend/backend tasks.</p>
+                    </div>
+                </div>
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Frontend Designer</div>
+                        <div class="card-image">
+                            <img src="img/profile-5.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">何彥禛</h2>
+                        <p class="contact-description">Designs optimal user experiences and frontend interfaces. Works with the Frontend Developer to propose requirements and constraints, aiming to enhance the user interface.</p>
+                    </div>
+                </div>
+                <div class="card-contact swiper-slide">
+                    <div class="image-content">
+                        <div class="tag-id">#Frontend Developer</div>
+                        <div class="card-image">
+                            <img src="img/profile-6.png" alt="" class="card-img">
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2 class="contact-name">黃浩宸</h2>
+                        <p class="contact-description">Collaborates with the Frontend Designer to provide a foundational user interface framework for backend developers, and designs interactive operations based on clear interface content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next swiper-navBtn"></div>
+        <div class="swiper-button-prev swiper-navBtn"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="contact-section">
+        <div class="contact-item">
+            <p style="margin-top: 50%;"><strong>Contact Us</strong></p>
+        </div>
+        <div class="contact-item">
+            <img src="img/github.png" alt="GitHub Icon" width="50" height="50">
+            <p><strong>GitHub</strong></p>
+            <a href="https://github.com/junren0321/MAZ" target="_blank">Visit Our GitHub</a>
+        </div>
+        <div class="contact-item">
+            <img src="img/email.png" alt="Email Icon" width="50" height="50">
+            <p><strong>Email</strong></p>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1
+            &to=maznager@gmail.com&su=[Customer Support]&body=Dear Maznager,%0D%0A%0D%0AName: [Your Name]%0D%0APhone Number: [Your Phone Number]%0D%0A%0D%0AIssues: [Describe the Issue here]%0D%0A%0D%0ASincerely,%0D%0A[Your Name]"
+            target="_blank">maznager@gmail.com</a>
+        </div>
+        <div class="contact-item">
+            <img src="img/location.png" alt="GitHub Icon" width="50" height="50">
+            <p><strong>Location</strong></p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" target="_blank">In Your Heart</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <script src = "../src/url_redirection.js"></script>
+    <script>
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade: 'true',
+            grabCursor: 'true',
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+
+            breakpoints:{
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    </script>
 </body>
 </html>

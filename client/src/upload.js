@@ -19,9 +19,10 @@ function appendAuthor() {
 }
 
 function displayAuthors() {
-  const addedAuthorsElement = document.getElementById("addedAuthors");
-  addedAuthorsElement.textContent = "Added Authors: " + authorsarray.join(", ");
+    const addedAuthorsElement = document.getElementById("addedAuthors");
+    addedAuthorsElement.innerHTML = authorsarray.map(author => `<span class="author-box">${author}</span>`).join(" ");
 }
+
 
 function deleteAuthor() {
     authorsarray = []; // Clear the array
@@ -32,9 +33,13 @@ function appendCategory() {
   const categorySelect = document.getElementById("tags");
   const selectedCategory = categorySelect.value.trim(); // Assuming a single selection for simplicity
   if (selectedCategory && !categories.includes(selectedCategory)) {
-      categories.push(selectedCategory); // Add to array if not already included
-    //   categorySelect.value = "";
-      displayCategories(); // Update the display
+    if (categories.length < 3) {
+        categories.push(selectedCategory); // Add to array if not already included
+        //   categorySelect.value = "";
+        displayCategories(); // Update the display
+    } else {
+        alert("You can't add more than three categories.");
+    }
   }
 }
 
@@ -45,9 +50,8 @@ function deleteCategory() {
 
 function displayCategories() {
     const selectedCategoriesElement = document.getElementById("selectedcategories");
-    selectedCategoriesElement.textContent = "Selected Categories: " + categories.join(", ");
+    selectedCategoriesElement.innerHTML = categories.map(category => `<span class="category-box">${category}</span>`).join(" ");
 }
-
 
 const uploadForm = document.getElementById('uploadform');
 
