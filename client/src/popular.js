@@ -55,6 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
         $even = $num / 2;
         $odd = ($num + 1) / 2;
 
+        const windowWidth = window.innerWidth;
+        const cardWidth = $('.my-card').outerWidth(true); // Including margin
+        const totalCardWidth = $num * cardWidth;
+
+        // Center the carousel
+        let newLeft;
+        if ($num % 2 == 0){
+            newLeft = 110 + ((windowWidth - totalCardWidth ) / 2);
+        }
+        else{
+            newLeft = ((windowWidth - totalCardWidth ) / 2);
+        }
+        
+        $('.card-carousel').css('left', newLeft + 'px');
+
         if ($num % 2 == 0) {
             $('.my-card:nth-child(' + $even + ')').addClass('active');
             $('.my-card:nth-child(' + $even + ')').prev().addClass('prev');
