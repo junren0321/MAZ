@@ -1,11 +1,17 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const resultsContainer = document.getElementById('search-results');
+    if (!(localStorage.getItem('searchResults'))) {
+        resultsContainer.innerHTML = `
+        <div class="search-fail-box">Please provide search criteria.</div>`;
+        return;
+    }
     const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
     console.log('Loaded from localStorage:', searchResults);  // 調試日誌
-    const resultsContainer = document.getElementById('search-results');
+
 
     if (searchResults.length === 0) {
         resultsContainer.innerHTML = `
-            <div class="search-fail-box">No matching result found.</div>`;
+            <div class="search-fail-box">No matching results found.</div>`;
         return;
     }
 
@@ -55,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     updateGridLayout(searchResults.length);
-
+    localStorage.removeItem("searchResults");
 });
 
 function viewBook(bookId) {

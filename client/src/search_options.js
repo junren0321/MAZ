@@ -1,4 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // if(localStorage.getItem("searchResults") == NULL){
+    //     const resultsContainer = document.getElementById('search-results');
+    //         resultsContainer.innerHTML = `
+    //         <div class="search-fail-box">Please provide search criteria.</div>`;
+    // }
     const tagsButtons = document.querySelectorAll('.theme-button');
     const tagsInput = document.getElementById('theme');
     const tagsContainer = document.getElementById('selected-tags');
