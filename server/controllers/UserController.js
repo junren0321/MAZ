@@ -97,8 +97,11 @@ exports.changepass = async (req, res) => {
     SET password = ?
     WHERE id = ?;
     `;
+
+    const hashedPassword = await bcrypt.hash(new_password, 10);
+    
     try {
-        await db.query(query, [new_password, userID]);
+        await db.query(query, [hashedPassword, userID]);
         res.sendStatus(204); // No content response for successful update
     } catch (error) {
         console.error('Error editing password:', error);

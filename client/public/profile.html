@@ -45,7 +45,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4>Change Profile Picture</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button id="closepic" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             <form class="form-dialog">
@@ -56,7 +56,7 @@
                                     <div class="overlay" onclick="uploadPic()"><i class="fas fa-camera"></i> &nbsp;Upload</div>
                                 </div>
                             </div>
-                                <button class="send-button" type="submit">Send</button>
+                                <button id ="changepic" class="send-button" type="submit">Send</button>
                             </form>
                         </div>
                     </div>
@@ -75,19 +75,23 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4>Change Primary Email</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button id="closeemail" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-dialog">
+                            <form id= "changemailform" class="form-dialog">
                                 <div class="form-input">
                                     <label class="required-input" for="password">Enter Password</label>
-                                    <input type="password" id="password" class="password form-control">
+                                    <input type="password" id="changemailpassword" name="changemailpassword" class="password form-control">
+                                </div>
+                                <div class="form-input">
+                                    <label class="required-input" for="email">Old Email</label>
+                                    <input type="email" id="oldemail" name="oldemail" class="account form-control">
                                 </div>
                                 <div class="form-input">
                                     <label class="required-input" for="email">New Email</label>
-                                    <input type="email" id="email" class="account form-control">
+                                    <input type="email" id="newemail" name="newemail" class="account form-control">
                                 </div>
-                                <button class="send-button" type="submit">Send</button>
+                                <button id="changemail" class="send-button" type="submit">Send</button>
                             </form>
                         </div>
                     </div>
@@ -105,23 +109,25 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4>Change Password</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <button id="closepassword" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-dialog">
+                            <form id="changepasswordform" class="form-dialog">
                                 <div class="form-input">
-                                    <label class="required-input" for="current-password">Current Password</label>
-                                    <input type="password" id="current-password" class="form-control">
+                                    <label class="required-input" for="currentpassword">Current Password</label>
+                                    <input type="password" id="currentpassword" name="currentpassword" class="form-control">
                                 </div>
                                 <div class="form-input">
-                                    <label class="required-input" for="new-password">New Password</label>
-                                    <input type="password" id="new-password" class="form-control">
+                                    <label class="required-input" for="newpassword">New Password</label>
+                                    <input type="password" id="newpassword" name="newpassword" class="form-control">
+                                    <div id="passwordError" class="error-message"></div>
                                 </div>
                                 <div class="form-input">
-                                    <label class="required-input" for="confirm-password">Confirm Password</label>
-                                    <input type="password" id="confirm-password" class="form-control">
+                                    <label class="required-input" for="confirmpassword">Confirm Password</label>
+                                    <input type="password" id="confirmpassword" name="confirmpassword" class="form-control">
+                                    <div id="confirmPasswordError" class="error-message"></div>
                                 </div>
-                                <button class="send-button btn btn-info" type="submit">Send</button>
+                                <button id="changepass" class="send-button btn btn-info" type="submit">Send</button>
                             </form>
                         </div>
                     </div>
@@ -139,20 +145,20 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4>Change Password</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            <h4>Change Username</h4>
+                            <button id="closeusername" type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-dialog">
+                            <form id="changeusernameform" class="form-dialog">
                                 <div class="form-input">
-                                    <label class="required-input" for="password">Enter Password</label>
-                                    <input type="password" id="password" class="password form-control">
+                                    <label class="required-input" for="changeusernamepassword">Enter Password</label>
+                                    <input type="password" id="changeusernamepassword" name="changeusernamepassword" class="password form-control">
                                 </div>
                                 <div class="form-input">
                                     <label class="required-input" for="username">New Username</label>
-                                    <input type="text" id="username" class="username form-control">
+                                    <input type="text" id="username" name="username" class="username form-control">
                                 </div>
-                                <button class="send-button" type="submit">Send</button>
+                                <button id="changeusername" class="send-button" type="submit">Send</button>
                             </form>
                         </div>
                     </div>
@@ -173,15 +179,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="form-dialog">
+                            <form id="deleteuserform" class="form-dialog">
                                 <div class="form-input">
                                     <label class="required-input" for="password">Enter Password</label>
-                                    <input type="password" id="password" class="password form-control">
+                                    <input type="password" id="deleteuserpassword" name="deleteuserpassword" class="password form-control">
                                 </div>
                                 <div><strong>Notice:</strong></div>
                                 <div>1. The account cannot be recovered after deletion.</div>
                                 <div>2. Your uploaded PicBooks will be deleted along with your account.</div>
-                                <button class="send-button" type="submit">Confirm</button>
+                                <button id="deleteuser" class="send-button" type="submit">Confirm</button>
                             </form>
                         </div>
                     </div>

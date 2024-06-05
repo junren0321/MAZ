@@ -31,7 +31,7 @@ CREATE TABLE books (
     page_count INT,
     isbn VARCHAR(20),
     description TEXT,
-    FOREIGN KEY (uploaded_by) REFERENCES users(id)
+    FOREIGN KEY (uploaded_by) REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (

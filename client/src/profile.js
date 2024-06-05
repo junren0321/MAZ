@@ -72,37 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-function viewBook(bookId) {
-    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
-    const book = searchResults.find(book => book.id === bookId);
-    if (book) {
-        localStorage.setItem('currentBook', JSON.stringify(book));
-        localStorage.setItem('bookId', bookId);
-        console.log('Book details stored in localStorage:', book);
-        window.location.href = 'explore_book.html';
-    }
-}
-
-function deleteBook(bookId) {
-    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
-    const book = searchResults.find(book => book.id === bookId);
-    if (book) {
-        // localStorage.setItem('currentBook', JSON.stringify(book));
-        // localStorage.setItem('bookId', bookId);
-        // console.log('Book details stored in localStorage:', book);
-
-        // TODO: perform delete feature book here
-        alert(`${book.name} has been successfully deleted`);
-        window.location.reload();
-    }
-}
-
-function uploadPic() {
-    // TODO: perform upload profile pic feature here
-    alert("Profile Picture has been successfully uploaded!");
-    window.location.reload();
-}
-
 async function fetchBooks() {
     const token = localStorage.getItem('jwt');
     try {
@@ -113,7 +82,7 @@ async function fetchBooks() {
                 'Authorization': `Bearer ${token}`
             }
         });
-
+        
         console.log('Response status:', response.status);
         if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
@@ -139,3 +108,196 @@ function viewBook(bookId) {
         window.location.href = 'explore_book.html';
     }
 }
+
+async function deleteBook(bookId) {
+    const searchResults = JSON.parse(localStorage.getItem('searchResults')) || [];
+    const book = searchResults.find(book => book.id === bookId);
+    
+    if (book) {
+        // TODO: perform delete feature book here
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        try {
+            const response = await fetch('/api/deletebook', {
+            method: 'DELETE',
+            body: JSON.stringify({
+                bookId: bookId
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            });
+            if (response.ok) {
+            alert(`${book.name} has been successfully deleted`);
+            window.location.reload();
+            } else {
+                alert('Something went wrong');
+                console.error('Failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    else{
+        alert('Something went wrong');
+    }
+}
+
+function uploadPic() {
+    // TODO: perform upload profile pic feature here
+    alert("Profile Picture has been successfully uploaded!");
+    window.location.reload();
+}
+
+// change email
+const changemail = document.getElementById('changemailform');
+changemail.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(changemail);
+    
+  try {
+    const response = await fetch('/api/changemail', {
+      method: 'PUT',
+      body: JSON.stringify({
+        changemailpassword: formData.get('changemailpassword'),
+        oldemail: formData.get('oldemail'),
+        newemail: formData.get('newemail')
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      const emailElement = document.querySelector('.profile-description.email');
+      const user = JSON.parse(localStorage.getItem('user'));
+      user.email = formData.get('newemail');
+      localStorage.setItem('user', JSON.stringify(user));
+      emailElement.textContent = `Current Email: ${formData.get('newemail')}`;
+      alert('Please check your new email for our message!');
+      document.getElementById('closeemail').click();
+    } else {
+        alert('Something went wrong');
+        console.error('Failed:', response.statusText);
+    }
+} catch (error) {
+    console.error('Error:', error);
+}
+});
+
+// change password
+const changepassword = document.getElementById('changepasswordform');
+changepassword.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(changepassword);
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    const passwordInput = formData.get('newpassword');
+    const confirmPasswordInput = formData.get('confirmpassword')
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
+    let valid = true;
+    
+    // Clear previous error messages
+    document.getElementById('passwordError').textContent = '';
+    document.getElementById('confirmPasswordError').textContent = '';
+    
+    // Check if password is 6-12 characters long and contains only letters and numbers
+    if (!passwordRegex.test(passwordInput)) {
+        document.getElementById('passwordError').textContent = 'Password must be 6-12 characters long and contain both letters and numbers.';
+        valid = false;
+    }
+    
+    // Check if passwords match
+    if (passwordInput !== confirmPasswordInput) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match.';
+        valid = false;
+    }
+
+    if(valid){
+        try {
+            const response = await fetch('/api/changepassword', {
+            method: 'PUT',
+            body: JSON.stringify({
+                currentpassword: formData.get('currentpassword'),
+                newpassword: formData.get('newpassword'),
+                useremail: user.email
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+            });
+            if (response.ok) {
+            alert('password change successful!');
+            document.getElementById('closepassword').click();
+            } else {
+                alert('Something went wrong');
+                console.error('Failed:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+});
+
+// change username
+const changeusername = document.getElementById('changeusernameform');
+changeusername.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(changeusername);
+    const user = JSON.parse(localStorage.getItem('user'));
+  try {
+    const response = await fetch('/api/changeusername', {
+      method: 'PUT',
+      body: JSON.stringify({
+        changenamepassword: formData.get('changeusernamepassword'),
+        newname: formData.get('username'),
+        useremail: user.email
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      const usernameElement = document.querySelector('.profile-description.username');
+      const user = JSON.parse(localStorage.getItem('user'));
+      user.username = formData.get('username');
+      localStorage.setItem('user', JSON.stringify(user));
+      usernameElement.textContent = `Current Username: ${formData.get('username')}`;
+      alert('Username change successful!');
+      document.getElementById('closeusername').click();
+    } else {
+        alert('Something went wrong');
+        console.error('Failed:', response.statusText);
+    }
+} catch (error) {
+    console.error('Error:', error);
+}
+});
+
+const deleteuser = document.getElementById('deleteuserform');
+deleteuser.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(deleteuser);
+    const user = JSON.parse(localStorage.getItem('user'));
+
+  try {
+    const response = await fetch('/api/deleteuser', {
+      method: 'DELETE',
+      body: JSON.stringify({
+        deleteuserpassword: formData.get('deleteuserpassword'),
+        useremail: user.email
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    if (response.ok) {
+      alert('Please check your email for our message!');
+      window.location.href = './index.html'
+    } else {
+        alert('Something went wrong');
+        console.error('Failed:', response.statusText);
+    }
+} catch (error) {
+    console.error('Error:', error);
+}
+});
