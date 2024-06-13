@@ -11,7 +11,7 @@ const upload = multer({ storage });
 // Book upload
 exports.uploadBook = async (req, res) => {
     // Log that the upload function was called
-    // console.log('Upload function called:', req.body);
+    console.log('Upload function called:', req.body);
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded.' });
     }
@@ -99,7 +99,6 @@ exports.getUserBooks = async (req, res) => {
 };
 
 exports.searchBooks = async (req, res) => {
-    console.log('Query Parameters:', req.query);
 
     const { title, isbn, language, tags, authors } = req.query;
 
