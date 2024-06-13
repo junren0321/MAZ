@@ -2,18 +2,17 @@ CREATE DATABASE IF NOT EXISTS MAZ;
 
 USE MAZ;
 
+DROP TABLE IF EXISTS Reviews;
 DROP TABLE IF EXISTS books;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS Reviews;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) UNIQUE NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
     birthdate DATE NOT NULL,
-    password VARCHAR(255) NOT NULL
-    -- security_question VARCHAR(255) NOT NULL,
-    -- security_answer VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    profilePic_filename VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE books (

@@ -1,4 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* profile-pic-2 container */
+    const user = JSON.parse(localStorage.getItem('user'));
+    const container = document.getElementById('profile-pic-2');
+    // console.log('pic url = ',user.profilePicUrl);
+
+    if (user && user.profilePicUrl) {
+        const img = document.createElement('img');
+        img.id = 'profile-pic-img';
+        img.src = user.profilePicUrl;
+        img.alt = 'profile-pic';
+        container.appendChild(img);
+    } else {
+        console.log('Default profile');
+        const img = document.createElement('img');
+        img.id = 'profile-pic-img';
+        img.src = 'img/profile-default.png';
+        img.alt = 'profile-pic';
+        container.appendChild(img);
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    overlay.innerHTML = '<i class="fas fa-camera"></i> &nbsp;Upload';
+
+    const fileInput = document.getElementById('fileInput');
+    if (!fileInput) {
+        console.error("File input not found!");
+        return;
+    }
+
+    // Set onclick to trigger file input dialog
+    overlay.onclick = () => fileInput.click();
+    container.appendChild(overlay);
+
+    /* profile-pic-2 container */
+
     if (userislogin()) {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.email) {
@@ -143,11 +179,120 @@ async function deleteBook(bookId) {
     }
 }
 
-function uploadPic() {
-    // TODO: perform upload profile pic feature here
-    alert("Profile Picture has been successfully uploaded!");
-    window.location.reload();
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0]; // Get the file that was uploaded
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const container = document.getElementById('profile-pic-2');
+            // Remove any existing images
+            const existingImage = container.querySelector('img');
+            if (existingImage) {
+                container.removeChild(existingImage);
+            }
+
+            // Create a new image element and set its properties
+            const img = document.createElement('img');
+            img.id = 'profile-pic-img';
+            img.src = e.target.result; // Set the image source to the file content
+            img.alt = 'Profile Picture';
+            container.appendChild(img); // Append the image to the container
+
+            // Remove existing overlay
+            const existingOverlay = container.querySelector('.overlay');
+            if (existingOverlay) {
+                container.removeChild(existingOverlay);
+            }
+
+            //create upload overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'overlay';
+            overlay.innerHTML = '<i class="fas fa-camera"></i> &nbsp;Upload';
+
+            const fileInput = document.getElementById('fileInput');
+            if (!fileInput) {
+                console.error("File input not found!");
+                return;
+            }
+        
+            // Set onclick to trigger file input dialog
+            overlay.onclick = () => fileInput.click();
+            container.appendChild(overlay);
+        };
+        reader.readAsDataURL(file); // Read the file as a data URL to trigger onload
+    }
+});
+
+function uploadProfilePicture() {
+    const token = localStorage.getItem('jwt');
+    const fileInput = document.getElementById('fileInput');
+
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('profilePicture', file);
+        console.log('Sending profile picture\n');
+
+        fetch('/api/changeprofilePic', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('Profile picture updated successfully!');
+            // Retrieve the existing user data from local storage
+            let userData = localStorage.getItem('user');
+            if (userData) {
+                userData = JSON.parse(userData); // Parse it to an object
+                userData.profilePicUrl = data.profilePicUrl; // Update the profilePicUrl
+                localStorage.setItem('user', JSON.stringify(userData)); // Convert it back to string and store it again
+            }
+            window.location.href = 'profile.html';
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('Failed to update profile picture.');
+        });
+    } else {
+        alert('Please select a file to upload.');
+    }
 }
+
+// function uploadProfilePicture() {
+//     const token = localStorage.getItem('jwt');
+    
+//     const fileInput = document.getElementById('fileInput');
+//     if (fileInput.files.length > 0) {
+//         const file = fileInput.files[0];
+
+//         const formData = new FormData();
+//         formData.append('profilePicture', file);
+//         console.log('Sending profile picture\n');
+//         fetch('/api/changeprofilePic', { // Updated endpoint
+//             method: 'POST', // Using POST for file upload
+//             body: formData,
+//             headers: {
+//                 'Authorization': `Bearer ${token}`
+//             }
+//         })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Success:', data);
+//             alert('Profile picture updated successfully!');
+//             window.location.href = 'profile.html';
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//             alert('Failed to update profile picture.');
+//         });
+//     } else {
+//         alert('Please select a file to upload.');
+//     }
+// }
 
 // change email
 const changemail = document.getElementById('changemailform');
@@ -293,6 +438,8 @@ deleteuser.addEventListener('submit', async (event) => {
     if (response.ok) {
       alert('Please check your email for our message!');
       window.location.href = './index.html'
+    } else if (response.status == 401){
+        alert('Wrong password');
     } else {
         alert('Something went wrong');
         console.error('Failed:', response.statusText);

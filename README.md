@@ -1,4 +1,4 @@
-### macOS:
+## macOS:
 
 #### Installing Node.js:
 
@@ -6,11 +6,15 @@
 
 2. Follow the installation instructions provided for macOS.
 
+
+
 #### Installing MySQL:
 
 1. Download MySQL from the [official website](https://dev.mysql.com/downloads/installer/).
 
 2. Follow the installation instructions provided for macOS.
+
+
 
 #### Configuring MySQL:
 
@@ -30,18 +34,30 @@
    ./mysql -u root -p < /path/to/directory/WebApp_Project/database/setup.sql
    ```
 
+
+
 #### Setting up Node.js dependencies:
 
-1. Navigate to your project directory:
-   ```bash
-   cd /path/to/directory/WebApp_Project/server
-   ```
+Navigate to the corresponding directory (e.g. `cd /path/to/directory/WebApp_Project/server`): 
 
-2. Initialize npm and install required packages:
-   ```bash
-   npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
-   ```
+##### In `server` directory:
+
+Initialize npm and install required packages:
+```bash
+npm init -y
+npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
+```
+
+##### In `client/public/pdfjs` directory:
+
+Initialize npm and install required packages:
+
+```bash
+npm init -y
+npm install express
+```
+
+
 
 #### Running the website:
 
@@ -50,9 +66,15 @@ Start the server:
 node server.js
 ```
 
-**Remember:** Change the `DB_PASSWORD` in "/path/to/directory/WebApp_Project/server/.env" to your MySQL password.
 
-### Windows:
+
+#### Remember:
+
+Change the `DB_PASSWORD` in `/path/to/directory/WebApp_Project/server/.env` to your MySQL password.
+
+
+
+## Windows:
 
 #### Installing Node.js:
 
@@ -60,11 +82,15 @@ node server.js
 
 2. Follow the installation instructions provided for Windows.
 
+
+
 #### Installing MySQL:
 
 1. Download MySQL from the [official website](https://dev.mysql.com/downloads/installer/).
 
 2. Follow the installation instructions provided for Windows.
+
+
 
 #### Configuring MySQL:
 
@@ -78,18 +104,30 @@ node server.js
    mysql -u root -p < \path\to\directory\WebApp_Project\database\setup.sql
    ```
 
+
+
 #### Setting up Node.js dependencies:
 
-1. Navigate to your project directory:
-   ```bash
-   cd \your\path\to\directory\WebApp_Project\server
-   ```
+Navigate to the corresponding directory (e.g. `cd \path\to\directory\WebApp_Project\server`): 
 
-2. Initialize npm and install required packages:
-   ```bash
-   npm init -y
-   npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
-   ```
+##### In `server` directory:
+
+Initialize npm and install required packages:
+```bash
+npm init -y
+npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
+```
+
+##### In `client\public\pdfjs` directory:
+
+Initialize npm and install required packages:
+
+```bash
+npm init -y
+npm install express
+```
+
+
 
 #### Running the website:
 
@@ -98,4 +136,8 @@ Start the server:
 node server.js
 ```
 
-**Remember:** Change the `DB_PASSWORD` in "\your\path\to\directory\WebApp_Project\server\.env" to your MySQL password.
+
+
+#### Remember: 
+
+Change the `DB_PASSWORD` in `\your\path\to\directory\WebApp_Project\server\.env` to your MySQL password.

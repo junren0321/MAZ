@@ -19,7 +19,8 @@
             <div class="nav-div" id="contact">contact</div>
             <div class="profile-icon">
                 <div id="profile-pic">
-                    <img id="profile-pic" src="img/profile-default.png" alt="profile-pic">
+                    <!-- will be appended in profilePic.js-->
+                    <!-- <img id="profile-pic-img" alt="profile-pic"> -->
                 </div>
                 <div class="dropdown-menu" id="dropdownMenu">
                     <div id="guest">Guest</div>
@@ -42,11 +43,11 @@
         Explore</div>
     <div class="magic-button" id="upload" style="position: absolute; left: 10%; top: 80%;">
         Upload PicBook</div>
+
+    <div id="tagcloud" style="position: absolute; bottom: 3%; right: 10%;"></div>
     <div id="flip-container" style="position: absolute; bottom: 5%; left: 30%;">
         <img id="flip-card" src="./img/faceright.png">
     </div>
-
-    <div id="tagcloud" style="position: absolute; bottom: 3%; right: 10%;"></div>
     
     <script>
         const flipContainer = document.getElementById('flip-container');
@@ -68,6 +69,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../src/jquery.svg3dtagcloud.min.js"></script>
     <script src="../src/3dtagcloud_setting.js"></script>
+    <script src = "../src/profilePic.js"></script>
     <script src = "../src/url_redirection.js"></script>
 </body>
 </html>
