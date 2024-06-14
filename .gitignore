@@ -1,40 +1,6 @@
 # Ignore node_modules directory in the server folder
 server/node_modules/
 server/.env
-# Ignore all files in server/uploads
-server/uploads/*
-
-# Do not ignore .gitkeep file in server/uploads
-!server/uploads/.gitkeep
-
-server/*.json
-# server/package.json
-# server/package-lock.json
-
-server.crt
-server.key
-
-localhost.pem
-localhost-key.pem
-
-.DS_Store
-client/.DS_Store
-client/css/.DS_Store
-client/src/.DS_Store
-client/public/.DS_Store
-node_modules/
-package-lock.json
-package.json
-server/.Rhistory
-
-# Ignore node_modules directory in the server folder
-server/node_modules/    
-server/.env
-# Ignore all files in server/uploads
-server/uploads/*
-
-# Do not ignore .gitkeep file in server/uploads
-!server/uploads/.gitkeep
 
 server/*.json
 # server/package.json

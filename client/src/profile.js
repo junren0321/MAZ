@@ -262,38 +262,6 @@ function uploadProfilePicture() {
     }
 }
 
-// function uploadProfilePicture() {
-//     const token = localStorage.getItem('jwt');
-    
-//     const fileInput = document.getElementById('fileInput');
-//     if (fileInput.files.length > 0) {
-//         const file = fileInput.files[0];
-
-//         const formData = new FormData();
-//         formData.append('profilePicture', file);
-//         console.log('Sending profile picture\n');
-//         fetch('/api/changeprofilePic', { // Updated endpoint
-//             method: 'POST', // Using POST for file upload
-//             body: formData,
-//             headers: {
-//                 'Authorization': `Bearer ${token}`
-//             }
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log('Success:', data);
-//             alert('Profile picture updated successfully!');
-//             window.location.href = 'profile.html';
-//         })
-//         .catch((error) => {
-//             console.error('Error:', error);
-//             alert('Failed to update profile picture.');
-//         });
-//     } else {
-//         alert('Please select a file to upload.');
-//     }
-// }
-
 // change email
 const changemail = document.getElementById('changemailform');
 changemail.addEventListener('submit', async (event) => {
@@ -418,6 +386,17 @@ changeusername.addEventListener('submit', async (event) => {
 }
 });
 
+function logout() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
+    localStorage.removeItem('searchResults');
+    localStorage.removeItem('uploadResults');
+    localStorage.removeItem('currentBook');
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('pdfUrl');
+    window.location.href = './index.html';
+}
+
 const deleteuser = document.getElementById('deleteuserform');
 deleteuser.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -437,7 +416,7 @@ deleteuser.addEventListener('submit', async (event) => {
     });
     if (response.ok) {
       alert('Please check your email for our message!');
-      window.location.href = './index.html'
+      logout();
     } else if (response.status == 401){
         alert('Wrong password');
     } else {

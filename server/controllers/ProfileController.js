@@ -228,25 +228,6 @@ exports.deleteuser = async (req, res) => {
     }
 };
 
-// exports.changeProfilePicture = async (req, res) => {
-//     console.log('Changing profile picture');
-//     if (!req.file) {
-//         console.log('No file uploaded');
-//         return res.status(400).json({ error: 'No file uploaded' });
-//     }
-//     const { filename } = req.file; // Comes from the file upload middleware (e.g., multer)
-//     const id = req.user.id; // Assuming the user ID is available from the session or JWT
-
-//     console.log('User id = ', id, ' profilePic_filename = ', filename);
-//     try {
-//         await db.query('UPDATE users SET profilePic_filename = ? WHERE id = ?', [filename, id]);
-//         res.status(200).json({ message: 'Profile picture updated successfully'});
-//     } catch (error) {
-//         console.error('Database error:', error);
-//         res.status(500).json({ error: 'Database error during profile picture update.' });
-//     }
-// };
-
 exports.changeProfilePicture = async (req, res) => {
     console.log('Changing profile picture');
     if (!req.file) {
