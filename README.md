@@ -1,4 +1,4 @@
-## macOS:
+# macOS:
 
 #### Installing Node.js:
 
@@ -6,15 +6,11 @@
 
 2. Follow the installation instructions provided for macOS.
 
-
-
 #### Installing MySQL:
 
 1. Download MySQL from the [official website](https://dev.mysql.com/downloads/installer/).
 
 2. Follow the installation instructions provided for macOS.
-
-
 
 #### Configuring MySQL:
 
@@ -33,8 +29,6 @@
    ```bash
    ./mysql -u root -p < /path/to/directory/WebApp_Project/database/setup.sql
    ```
-
-
 
 #### Setting up Node.js dependencies:
 
@@ -57,7 +51,9 @@ npm init -y
 npm install express
 ```
 
+#### Change the `DB_PASSWORD`:
 
+Change the `DB_PASSWORD` in `/path/to/directory/WebApp_Project/server/.env` to your MySQL password.
 
 #### Running the website:
 
@@ -68,13 +64,7 @@ node server.js
 
 
 
-#### Remember:
-
-Change the `DB_PASSWORD` in `/path/to/directory/WebApp_Project/server/.env` to your MySQL password.
-
-
-
-## Windows:
+# Windows:
 
 #### Installing Node.js:
 
@@ -82,15 +72,11 @@ Change the `DB_PASSWORD` in `/path/to/directory/WebApp_Project/server/.env` to y
 
 2. Follow the installation instructions provided for Windows.
 
-
-
 #### Installing MySQL:
 
 1. Download MySQL from the [official website](https://dev.mysql.com/downloads/installer/).
 
 2. Follow the installation instructions provided for Windows.
-
-
 
 #### Configuring MySQL:
 
@@ -103,8 +89,6 @@ Change the `DB_PASSWORD` in `/path/to/directory/WebApp_Project/server/.env` to y
    ```bash
    mysql -u root -p < \path\to\directory\WebApp_Project\database\setup.sql
    ```
-
-
 
 #### Setting up Node.js dependencies:
 
@@ -127,7 +111,9 @@ npm init -y
 npm install express
 ```
 
+#### Change the `DB_PASSWORD`:
 
+Change the `DB_PASSWORD` in `\your\path\to\directory\WebApp_Project\server\.env` to your MySQL password.
 
 #### Running the website:
 
@@ -135,9 +121,3 @@ Start the server:
 ```bash
 node server.js
 ```
-
-
-
-#### Remember: 
-
-Change the `DB_PASSWORD` in `\your\path\to\directory\WebApp_Project\server\.env` to your MySQL password.
