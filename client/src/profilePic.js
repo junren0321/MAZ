@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const container = document.getElementById('profile-pic');
     // console.log('pic url = ',user.profilePicUrl);
-
+    
     if (user && user.profilePicUrl) {
         const img = document.createElement('img');
         img.id = 'profile-pic-img';
