@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 // User registration
 exports.register = async (req, res) => {
     // console.log('Register function called');
+
     const { username, email, birthdate, password} = req.body;
     
     const hashedPassword = await bcrypt.hash(password, 10);
