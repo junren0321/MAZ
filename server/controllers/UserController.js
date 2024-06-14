@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 
 // User registration
 exports.register = async (req, res) => {
-    console.log('Register function called');
+    // console.log('Register function called');
     const { username, email, birthdate, password} = req.body;
     
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -46,7 +46,7 @@ exports.login = async (req, res) => {
                     birthdate: users[0].birthdate, 
                     profilePicUrl: `/uploads/${users[0].profilePic_filename}` } 
             });
-            console.log(res);
+            // console.log(res);
         } else {
             res.status(401).json({ error: 'Invalid email or password' });
         }
