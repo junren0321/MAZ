@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
         img.alt = 'profile-pic';
         container.appendChild(img);
     } else {
-        console.log('Default profile');
+        // console.log('Default profile');
         const img = document.createElement('img');
         img.id = 'profile-pic-img';
         img.src = 'img/profile-default.png';

@@ -10,7 +10,7 @@ exports.register = async (req, res) => {
     const { username, email, birthdate, password} = req.body;
     
     const hashedPassword = await bcrypt.hash(password, 10);
-    const profilePic_filename = '';
+    const profilePic_filename = 'profile-default.png';
     // const hashedSecurityAnswer = await bcrypt.hash(security_answer, 10); // Hash the security answer
     
     try {
