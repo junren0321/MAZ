@@ -386,17 +386,6 @@ changeusername.addEventListener('submit', async (event) => {
 }
 });
 
-function logout() {
-    localStorage.removeItem('jwt');
-    localStorage.removeItem('user');
-    localStorage.removeItem('searchResults');
-    localStorage.removeItem('uploadResults');
-    localStorage.removeItem('currentBook');
-    localStorage.removeItem('bookId');
-    localStorage.removeItem('pdfUrl');
-    window.location.href = './index.html';
-}
-
 const deleteuser = document.getElementById('deleteuserform');
 deleteuser.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -415,8 +404,8 @@ deleteuser.addEventListener('submit', async (event) => {
       }
     });
     if (response.ok) {
-      alert('Please check your email for our message!');
-      logout();
+        logout();
+        alert('Please check your email for our message!');
     } else if (response.status == 401){
         alert('Wrong password');
     } else {

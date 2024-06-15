@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     updateGridLayout(searchResults.length);
-    localStorage.removeItem("searchResults");
 });
 
 function viewBook(bookId) {

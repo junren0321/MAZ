@@ -97,18 +97,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.getElementById('logout').addEventListener('click', function() {
-    function logout() {
-        localStorage.removeItem('jwt');
-        localStorage.removeItem('user');
-        localStorage.removeItem('searchResults');
-        localStorage.removeItem('uploadResults');
-        localStorage.removeItem('currentBook');
-        localStorage.removeItem('bookId');
-        localStorage.removeItem('pdfUrl');
-        window.location.href = './index.html';
-    }
+function logout() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
+    localStorage.removeItem('searchResults');
+    localStorage.removeItem('uploadResults');
+    localStorage.removeItem('currentBook');
+    localStorage.removeItem('bookId');
+    localStorage.removeItem('pdfUrl');
+    window.location.href = './index.html';
+}
 
+document.getElementById('logout').addEventListener('click', function() {
     logout();
     alert('You have successfully logged out!');
 });
@@ -121,14 +121,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.username) {
             document.getElementById('username').textContent = user.username;
-            // if (user.profilePicUrl) {
-            //     document.getElementById('profile-pic').querySelector('img').src = user.profilePicUrl;
-            //     document.getElementById('profile-pic-2').querySelector('img').src = user.profilePicUrl;
-            // }
-            // if (true) {
-            //     document.getElementById('profile-pic').querySelector('img').src = "./img/profile-4.png";
-            //     document.getElementById('profile-pic-2').querySelector('img').src = "./img/profile-4.png";
-            // }
         }
+        if (user && user.profilePicUrl) {
+            const img = document.createElement('img');
+            img.id = 'profile-pic-img';
+            img.src = user.profilePicUrl;
+            img.alt = 'profile-pic';
+            document.getElementById('profile-pic').appendChild(img);
+        }
+    } else {
+        const img = document.createElement('img');
+        img.id = 'profile-pic-img';
+        img.src = 'img/profile-default.png';
+        img.alt = 'profile-pic';
+        document.getElementById('profile-pic').appendChild(img);
     }
 });
