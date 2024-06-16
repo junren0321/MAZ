@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
                 message: 'Login successful', 
                 token, 
                 user: {
-                    userID: users[0].id,
+                    userId: users[0].id,
                     username: users[0].username, 
                     email: users[0].email, 
                     birthdate: users[0].birthdate, 
@@ -87,7 +87,7 @@ exports.forgot = async (req, res) => {
                     return res.status(500).json({ error: 'Error sending email.'});
                 } else {
                     console.log('Email sent:', info.response);
-                    return res.json({ message: 'Please check your email for the verification code.', verification_code, userID: users.user_id});
+                    return res.json({ message: 'Please check your email for the verification code.', verification_code, userId: users.user_id});
                 }
             });
         } else {
@@ -101,7 +101,7 @@ exports.forgot = async (req, res) => {
 
 // Forgot password Verification
 exports.changepass = async (req, res) => {
-    const { new_password, userID } = req.body;
+    const { new_password, userId } = req.body;
     const query = `
     UPDATE users
     SET password = ?
@@ -111,7 +111,7 @@ exports.changepass = async (req, res) => {
     const hashedPassword = await bcrypt.hash(new_password, 10);
     
     try {
-        await db.query(query, [hashedPassword, userID]);
+        await db.query(query, [hashedPassword, userId]);
         res.sendStatus(204); // No content response for successful update
     } catch (error) {
         console.error('Error editing password:', error);

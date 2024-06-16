@@ -31,7 +31,7 @@ const fetchReviews = async (req, res) => {
             FROM 
                 Reviews
             JOIN 
-                users ON Reviews.userID = users.id
+                users ON Reviews.userId = users.id
             WHERE 
                 Reviews.bookId = ?
             ORDER BY

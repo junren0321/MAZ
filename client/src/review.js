@@ -35,7 +35,7 @@ async function submitReview() {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 
-                userId: userObject.userID, 
+                userId: userObject.userId, 
                 bookId: currentbookId,
                 review: document.getElementById('reviewInput').value
             }),
@@ -69,7 +69,7 @@ async function fetchReviews(bookId) {
         reviews.forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.className = 'review-box';
-            console.log(review);
+
             const reviewDate = new Date(review.createdAt);
             const now = new Date();
             const relativeTime = formatDistance(reviewDate, now, { addSuffix: true });
@@ -86,7 +86,7 @@ async function fetchReviews(bookId) {
                 <p style="white-space: pre-line;">${review.review}</p>
             </div>`;
 
-            if (userObject.userID === review.userId & userislogin()){
+            if (userObject.userId === review.userId & userislogin()){
                 const spacer = document.createElement('div');
                 spacer.style.height = '20px';
                 reviewItem.appendChild(spacer);

@@ -1,5 +1,5 @@
 let verification_code = -1;
-let userID = -1;
+let userId = -1;
 
 const forgotForm = document.getElementById('forgotform');
 forgotForm.addEventListener('submit', async (event) => {
@@ -18,7 +18,7 @@ forgotForm.addEventListener('submit', async (event) => {
     if (response.ok) {
       const data = await response.json();
       verification_code = data.verification_code;
-      userID = data.userID;
+      userId = data.userId;
       alert('Please check your email for the verification code!');
       document.getElementById('forgotform').style.display = 'none';
       document.getElementById('verifyform').style.display = 'block';
@@ -77,7 +77,7 @@ changepassForm.addEventListener('submit', async (event) => {
         method: 'PUT',
         body: JSON.stringify({
           new_password: formData.get('password'),
-          userID: userID
+          userId: userId
         }),
         headers: {
           'Content-Type': 'application/json'

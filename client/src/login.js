@@ -18,7 +18,7 @@ loginForm.addEventListener('submit', async (event) => {
       localStorage.setItem('jwt', data.token); // Store the JWT in localStorage
       
       localStorage.setItem('user', JSON.stringify({
-        userID: data.user.userID,
+        userId: data.user.userId,
         username: data.user.username, 
         email: data.user.email, 
         birthdate: data.user.birthdate, 
