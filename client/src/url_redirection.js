@@ -105,6 +105,7 @@ function logout() {
     localStorage.removeItem('currentBook');
     localStorage.removeItem('bookId');
     localStorage.removeItem('pdfUrl');
+    localStorage.removeItem('pdfjs.history');
     window.location.href = './index.html';
 }
 

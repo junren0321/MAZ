@@ -3,11 +3,11 @@
 const db = require('../config/database');
 
 const submitReview = async (req, res) => {
-    const { username, bookId, review } = req.body;
+    const { userId, bookId, review } = req.body;
     try {
         const [result] = await db.query(
-            'INSERT INTO Reviews (username, bookId, review) VALUES (?, ?, ?)',
-            [username, bookId, review]
+            'INSERT INTO Reviews (userId, bookId, review) VALUES (?, ?, ?)',
+            [userId, bookId, review]
         );
         res.status(201).json({ message: 'Review submitted successfully', reviewId: result.insertId });
     } catch (error) {
@@ -19,7 +19,24 @@ const submitReview = async (req, res) => {
 const fetchReviews = async (req, res) => {
     const bookId = req.params.bookId;
     try {
-        const results = await db.query(`SELECT * FROM Reviews WHERE bookId = ?;`, [bookId]);
+        const [results] = await db.query(`
+            SELECT 
+                Reviews.id AS id,
+                Reviews.userId AS userId, 
+                Reviews.bookId AS bookId, 
+                Reviews.review AS review, 
+                Reviews.createdAt AS createdAt, 
+                users.username AS username, 
+                users.profilePic_filename AS profilePicURL
+            FROM 
+                Reviews
+            JOIN 
+                users ON Reviews.userID = users.id
+            WHERE 
+                Reviews.bookId = ?
+            ORDER BY
+                Reviews.id;
+        `, [bookId]);
         // console.log(results, bookId);
         res.status(200).json(results);
     } catch (error) {

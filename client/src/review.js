@@ -35,9 +35,8 @@ async function submitReview() {
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ 
-                username: currentUser, 
+                userId: userObject.userID, 
                 bookId: currentbookId,
-                profilePicUrl: userObject.profilePicUrl,
                 review: document.getElementById('reviewInput').value
             }),
         });
@@ -64,14 +63,13 @@ async function fetchReviews(bookId) {
         const reviews = await response.json();
         
         const userObject = JSON.parse(localStorage.getItem('user'));
-        const currentUser = userObject ? userObject.username : null;
         const resultsContainer = document.getElementById('review-results');
         resultsContainer.innerHTML = '';
         
-        reviews[0].forEach((review) => {
+        reviews.forEach((review) => {
             const reviewItem = document.createElement('div');
             reviewItem.className = 'review-box';
-            
+            console.log(review);
             const reviewDate = new Date(review.createdAt);
             const now = new Date();
             const relativeTime = formatDistance(reviewDate, now, { addSuffix: true });
@@ -79,7 +77,7 @@ async function fetchReviews(bookId) {
             reviewItem.innerHTML = 
             `<div class="left-review-box">
                 <div class="profile-pic-1">
-                    <img class="profile-pic-img" src="img/profile-default.png" alt="profile-pic">
+                    <img class="profile-pic-img" src="uploads/${review.profilePicURL}" alt="profile-pic">
                 </div>
             </div>
             <div class="right-review-box">
@@ -88,7 +86,7 @@ async function fetchReviews(bookId) {
                 <p style="white-space: pre-line;">${review.review}</p>
             </div>`;
 
-            if (currentUser === review.username & userislogin()){
+            if (userObject.userID === review.userId & userislogin()){
                 const spacer = document.createElement('div');
                 spacer.style.height = '20px';
                 reviewItem.appendChild(spacer);
@@ -105,11 +103,6 @@ async function fetchReviews(bookId) {
             }
             
             resultsContainer.appendChild(reviewItem);
-            
-            if (review.profilePicUrl) {
-                reviewItem.querySelector('.profile-pic-img').src = review.profilePicUrl;
-                // reviewItem.querySelector('.profile-pic-img').src = "./img/profile-1.png";
-            }
         });
     } catch (error) {
         console.error('Error fetching reviews:', error);
