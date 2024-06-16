@@ -1,4 +1,5 @@
 USE MAZ;
+-- SET NAMES utf8mb4;
 
 INSERT INTO users (
     username,
