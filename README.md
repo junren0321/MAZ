@@ -12,6 +12,8 @@
 
 2. Follow the installation instructions provided for macOS.
 
+3. Must download MYSQL from the version 8.0 or higher.
+
 #### Configuring MySQL:
 
 1. Navigate to MySQL bin directory:
@@ -20,14 +22,18 @@
    ```
 
 2. Start the MySQL server:
-
-    ```bash
-    sudo /usr/local/mysql/support-files/mysql.server start
-    ```
+   ```bash
+   sudo /usr/local/mysql/support-files/mysql.server start
+   ```
 
 3. Execute setup script:
    ```bash
    ./mysql -u root -p < /path/to/directory/WebApp_Project/database/setup.sql
+   ```
+
+4. Execute initialization script:
+   ```bash
+   mysql -u root -p < \path\to\directory\WebApp_Project\database\init.sql
    ```
 
 #### Setting up Node.js dependencies:
@@ -40,15 +46,6 @@ Initialize npm and install required packages:
 ```bash
 npm init -y
 npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
-```
-
-##### In `client/public/pdfjs` directory:
-
-Initialize npm and install required packages:
-
-```bash
-npm init -y
-npm install express
 ```
 
 #### Change the `DB_PASSWORD`:
@@ -78,6 +75,8 @@ node server.js
 
 2. Follow the installation instructions provided for Windows.
 
+3. Must download MYSQL from the version 8.0 or higher.
+
 #### Configuring MySQL:
 
 1. Navigate to MySQL bin directory:
@@ -90,6 +89,11 @@ node server.js
    mysql -u root -p < \path\to\directory\WebApp_Project\database\setup.sql
    ```
 
+3. Execute initialization script:
+   ```bash
+   mysql -u root -p < \path\to\directory\WebApp_Project\database\init.sql
+   ```
+
 #### Setting up Node.js dependencies:
 
 Navigate to the corresponding directory (e.g. `cd \path\to\directory\WebApp_Project\server`): 
@@ -100,15 +104,6 @@ Initialize npm and install required packages:
 ```bash
 npm init -y
 npm install express mysql2 multer bcryptjs jsonwebtoken dotenv sequelize cors nodemailer
-```
-
-##### In `client\public\pdfjs` directory:
-
-Initialize npm and install required packages:
-
-```bash
-npm init -y
-npm install express
 ```
 
 #### Change the `DB_PASSWORD`:
